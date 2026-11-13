@@ -1,0 +1,7 @@
+# Personal / Interview documents
+Placement_Interview_Notes.pdf
+
+# OS and Editor temp files
+.DS_Store
+Thumbs.db
+*.log
