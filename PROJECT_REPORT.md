@@ -80,7 +80,7 @@ The application follows a decoupled model-view-controller (MVC) inspired client-
 
 ### 4.1 Developer 1 (Anmol): Data Layer, Filter Pipeline & Storage State
 * **`js/properties-data.js`:**
-  - Built an immutable mock database of 12 verified listings across 8 Indian metropolitan zones (Mumbai, Bengaluru, Delhi NCR, Pune, Hyderabad, Goa, Kolkata, Chennai).
+  - Built an immutable mock database of 64 verified listings across 8 Indian metropolitan zones (Mumbai, Bengaluru, Delhi NCR, Pune, Hyderabad, Goa, Kolkata, Chennai).
   - Defined rigid JSDoc schemas incorporating specifications (Beds, Baths, Area Sq.Ft, Furnishing, Vastu Facing, Floor, Parking, RERA ID, and Gallery Assets).
   - Provided defensive query methods (`getAllProperties`, `getPropertyById`, `getFeaturedProperties`, `getAvailableCities`).
 * **`js/storage-state.js`:**
@@ -124,7 +124,7 @@ The application follows a decoupled model-view-controller (MVC) inspired client-
 | # | Webpage | File Name | Key Features & Functional Modules |
 | :---: | :--- | :--- | :--- |
 | **1** | **Home** | `index.html` | Hero spotlight banner with instant search redirect, verified property carousel, popular city discovery grid, platform value pillars, customer testimonials, and universal header/footer. |
-| **2** | **All Properties** | `properties.html` | Master catalog of 12 verified listings, debounced search bar, multi-criteria filter panel (City, Type, Intent, Budget slider, BHK checkboxes), active filter chips, sort engine, and quick modal preview. |
+| **2** | **All Properties** | `properties.html` | Master catalog of 60+ verified listings (64 properties across 8 metros), debounced search bar, multi-criteria filter panel (City, Type, Intent, Budget slider, BHK checkboxes), active filter chips, sort engine, and quick modal preview. |
 | **3** | **Property Detail** | `property-detail.html` | Deep-dive specs page accepting dynamic URL query (`?id=...`), high-resolution photo gallery with thumbnail switcher, 2D floor blueprint schematic illustration, neighborhood transit distance radar (Metro, Airport, Hospital, School, Mall), certified relationship manager card with direct WhatsApp/Call triggers, and embedded site visit booking form. |
 | **4** | **EMI & Finance** | `calculator.html` | 3-in-1 Financial Hub: (1) Interactive Mortgage EMI Calculator with sliders & amortization breakdown; (2) State Stamp Duty & Registration Estimator (Maharashtra, Karnataka, Delhi, Telangana, Goa, West Bengal); (3) Gross Rental Yield & Capital Payback Calculator; plus a live Q4 2026 Bank Interest Rates Comparison Table (SBI, HDFC, ICICI, Axis, BoB) and Financial FAQ accordion. |
 | **5** | **Wishlist & Compare** | `saved.html` | Dual-tab personal dashboard: (1) Saved Wishlist persisted via LocalStorage with dynamic badge counter and clear options; (2) Side-by-Side Property Comparison Matrix comparing up to 3 properties across 15+ architectural parameters, price per sq.ft, and verified amenities checklist. |
