@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport configuration for mobile responsiveness (Authored by Mukesh) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamNest - Verified Real Estate Listing & Mortgage Platform</title>
+
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets: Mukesh's Design System + Kunal's Component Styling -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         SECTION 1: STICKY NAVIGATION BAR (Authored by Mukesh)
+         ====================================================================== -->
+    <header class="site-header">
+        <div class="site-container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="index.html" class="brand-logo" aria-label="DreamNest Home">
+                    <span class="brand-logo__icon">🏰</span>
+                    <div>
+                        <span>DreamNest</span>
+                        <span class="brand-logo__sub">Verified Properties</span>
+                    </div>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#filterSection" class="nav-link is-active">Browse Homes</a></li>
+                    <li><a href="#mortgageCalculatorSection" class="nav-link">Mortgage EMI</a></li>
+                    <li><a href="#featuresSection" class="nav-link">Why DreamNest</a></li>
+                    <li><a href="#teamSection" class="nav-link">Project Team</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <!-- Wishlist button (Connected to Anmol's LocalStorage state) -->
+                    <button type="button" class="header-badge-btn" id="headerFavoritesBtn" title="View your saved properties">
+                        <span>❤️ Saved</span>
+                        <span class="counter-badge" id="favoritesCountBadge" style="display: none;">0</span>
+                    </button>
+
+                    <!-- Mobile Hamburger Button -->
+                    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggleBtn" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================================================================
+             SECTION 2: HERO BANNER (Authored by Mukesh)
+             ================================================================== -->
+        <section class="hero-section">
+            <div class="site-container">
+                <div class="hero-content">
+                    <div class="hero-pill-badge">
+                        <span>✨ RERA Verified Real Estate Portal</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Discover Your <span>Dream Home</span> Across India's Prime Metros
+                    </h1>
+                    <p class="hero-subtitle">
+                        Explore hand-verified luxury apartments, contemporary duplex villas, and panoramic penthouses with 100% price transparency and zero hidden brokerage.
+                    </p>
+
+                    <div class="hero-quick-stats">
+                        <div class="hero-stat-item">
+                            <strong>12+</strong>
+                            <span>Verified Listings</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <strong>8</strong>
+                            <span>Metro Cities</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <strong>₹0</strong>
+                            <span>Brokerage Fees</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <strong>100%</strong>
+                            <span>RERA Compliant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 3: MULTI-CRITERIA FILTER PANEL (Authored by Mukesh & Anmol)
+             ================================================================== -->
+        <section class="filter-panel-section" id="filterSection">
+            <div class="site-container">
+                <div class="filter-card">
+                    <!-- Row 1: Keyword, City, Type, Purpose -->
+                    <div class="filter-grid-row-1">
+                        <div class="filter-control-group">
+                            <label for="filterSearchInput" class="filter-control-label">Search Properties</label>
+                            <div class="filter-input-wrap">
+                                <span class="filter-input-icon">🔍</span>
+                                <input 
+                                    type="text" 
+                                    id="filterSearchInput" 
+                                    class="filter-input filter-input--with-icon" 
+                                    placeholder="Search by city, locality, or amenity (e.g. Worli, Pool, Metro)..." 
+                                />
+                            </div>
+                        </div>
+
+                        <div class="filter-control-group">
+                            <label for="filterCity" class="filter-control-label">Location / City</label>
+                            <select id="filterCity" class="filter-select">
+                                <option value="all">All Cities</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Bengaluru">Bengaluru</option>
+                                <option value="Delhi NCR">Delhi NCR</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Chennai">Chennai</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-control-group">
+                            <label for="filterPropertyType" class="filter-control-label">Property Type</label>
+                            <select id="filterPropertyType" class="filter-select">
+                                <option value="all">All Types</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Villa">Villa</option>
+                                <option value="Penthouse">Penthouse</option>
+                                <option value="Studio">Studio</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-control-group">
+                            <span class="filter-control-label">Intent</span>
+                            <div class="purpose-toggle-group">
+                                <label class="purpose-toggle-label">
+                                    <input type="radio" name="purposeFilter" value="all" checked /> All
+                                </label>
+                                <label class="purpose-toggle-label">
+                                    <input type="radio" name="purposeFilter" value="Sale" /> Buy
+                                </label>
+                                <label class="purpose-toggle-label">
+                                    <input type="radio" name="purposeFilter" value="Rent" /> Rent
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Price Range, BHK Count, Furnishing, Sorting -->
+                    <div class="filter-grid-row-2">
+                        <div class="price-slider-wrap">
+                            <div class="price-slider-header">
+                                <span class="filter-control-label">Maximum Budget</span>
+                                <span id="priceSliderValueDisplay">₹5.00 Cr (Max)</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="filterPriceRange" 
+                                class="styled-range-slider" 
+                                min="25000" 
+                                max="50000000" 
+                                step="25000" 
+                                value="50000000" 
+                            />
+                        </div>
+
+                        <div class="filter-control-group">
+                            <span class="filter-control-label">Bedrooms (BHK)</span>
+                            <div class="bhk-pills-row">
+                                <button type="button" class="bhk-pill is-active" data-bhk-val="0">Any</button>
+                                <button type="button" class="bhk-pill" data-bhk-val="1">1 BHK</button>
+                                <button type="button" class="bhk-pill" data-bhk-val="2">2 BHK</button>
+                                <button type="button" class="bhk-pill" data-bhk-val="3">3 BHK</button>
+                                <button type="button" class="bhk-pill" data-bhk-val="4">4+ BHK</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-control-group">
+                            <label for="filterFurnishing" class="filter-control-label">Furnishing</label>
+                            <select id="filterFurnishing" class="filter-select">
+                                <option value="all">Any Furnishing</option>
+                                <option value="Fully-Furnished">Fully-Furnished</option>
+                                <option value="Semi-Furnished">Semi-Furnished</option>
+                                <option value="Unfurnished">Unfurnished</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-control-group">
+                            <label for="filterSortBy" class="filter-control-label">Sort Order</label>
+                            <select id="filterSortBy" class="filter-select">
+                                <option value="featured">Featured First</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="area-desc">Area: Largest First</option>
+                                <option value="newest">Recently Listed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Active Filter Chips & Control Buttons -->
+                    <div class="filter-actions-bar">
+                        <div class="filter-chips-container" id="activeFilterChips" style="display: none;">
+                            <!-- Dynamically generated by Anmol's search-filter.js -->
+                        </div>
+
+                        <div class="filter-buttons-group">
+                            <button type="button" class="btn btn--outline btn--sm" id="toggleFavoritesViewBtn">
+                                View Saved Favorites
+                            </button>
+                            <button type="button" class="btn btn--text btn--sm" id="resetFiltersBtn">
+                                ↺ Reset All Filters
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 4: PROPERTY LISTINGS CATALOG (Cards rendered by Anmol & Mukesh)
+             ================================================================== -->
+        <section class="site-container">
+            <div class="catalog-header-bar">
+                <span class="results-badge-text" id="resultsCountBadge">
+                    Loading verified listings...
+                </span>
+            </div>
+
+            <!-- Dynamic Grid Target Container -->
+            <div class="properties-grid" id="propertiesContainer">
+                <!-- Dynamically populated by Anmol's FilterEngine -->
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 5: HOME LOAN & EMI CALCULATOR (Markup by Mukesh, Logic by Kunal)
+             ================================================================== -->
+        <section class="site-container" id="mortgageCalculatorSection">
+            <div class="calculator-card">
+                <div class="calculator-card__header">
+                    <span class="section-tag">Financial Tool</span>
+                    <h2 class="calculator-card__title">Home Loan & Monthly EMI Calculator</h2>
+                    <p class="calculator-card__subtitle">
+                        Plan your real estate investment with real-time interest, down payment, and installment projections.
+                    </p>
+                    <span class="calculator-card__notice" id="calcPropertyNotice" style="display: none;"></span>
+                </div>
+
+                <div class="calc-grid">
+                    <!-- Left: Sliders and Inputs -->
+                    <div class="calc-inputs-column">
+                        <div class="calc-field-group">
+                            <label for="calcPropertyPrice" class="calc-field-header">
+                                <span>Property Value (₹)</span>
+                            </label>
+                            <input 
+                                type="number" 
+                                id="calcPropertyPrice" 
+                                class="calc-text-input" 
+                                value="15000000" 
+                                step="100000" 
+                                min="100000" 
+                            />
+                        </div>
+
+                        <div class="calc-field-group">
+                            <div class="calc-field-header">
+                                <span>Down Payment</span>
+                                <span id="calcDownPaymentText">₹ 30,00,000 (20%)</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="calcDownPayment" 
+                                class="calc-range-slider" 
+                                min="10" 
+                                max="60" 
+                                value="20" 
+                                step="5" 
+                            />
+                            <div class="calc-pills-row">
+                                <button type="button" class="calc-pill-btn" data-calc-dp="10">10%</button>
+                                <button type="button" class="calc-pill-btn" data-calc-dp="20">20%</button>
+                                <button type="button" class="calc-pill-btn" data-calc-dp="30">30%</button>
+                                <button type="button" class="calc-pill-btn" data-calc-dp="40">40%</button>
+                            </div>
+                        </div>
+
+                        <div class="calc-field-group">
+                            <div class="calc-field-header">
+                                <span>Loan Tenure</span>
+                                <span id="calcTenureText">20 Years (240 months)</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="calcTenure" 
+                                class="calc-range-slider" 
+                                min="5" 
+                                max="30" 
+                                value="20" 
+                                step="1" 
+                            />
+                        </div>
+
+                        <div class="calc-field-group">
+                            <div class="calc-field-header">
+                                <span>Interest Rate (% per annum)</span>
+                                <span id="calcRateText">8.50 % p.a.</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="calcRate" 
+                                class="calc-range-slider" 
+                                min="6.5" 
+                                max="14.0" 
+                                value="8.5" 
+                                step="0.1" 
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Right: Results Panel -->
+                    <div class="calc-results-panel">
+                        <div class="calc-emi-highlight">
+                            <div class="calc-emi-highlight__label">Estimated Monthly EMI</div>
+                            <div class="calc-emi-highlight__amount" id="calcEmiResult">₹ 1,04,140 / mo</div>
+                        </div>
+
+                        <div class="calc-breakdown-list">
+                            <div class="calc-breakdown-row">
+                                <span>Principal Loan Amount:</span>
+                                <strong id="calcPrincipalResult">₹ 1,20,00,000</strong>
+                            </div>
+                            <div class="calc-breakdown-row">
+                                <span>Total Interest Payable:</span>
+                                <strong id="calcInterestResult">₹ 1,29,93,522</strong>
+                            </div>
+                            <div class="calc-breakdown-row">
+                                <span>Total Amount (P + I):</span>
+                                <strong id="calcTotalResult">₹ 2,49,93,522</strong>
+                            </div>
+                        </div>
+
+                        <button type="button" class="calc-reset-btn" id="calcResetBtn">Reset Calculator</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 6: WHY DREAMNEST TRUST MODULE (Authored by Mukesh)
+             ================================================================== -->
+        <section class="features-section" id="featuresSection">
+            <div class="site-container">
+                <div class="section-header">
+                    <span class="section-tag">Trust & Reliability</span>
+                    <h2 class="section-title">Why Indian Homebuyers Choose DreamNest</h2>
+                    <p class="section-subtitle">
+                        Eliminating real estate fraud, misleading carpet areas, and hidden transaction costs with verified regulatory compliance.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-box__icon">🛡️</div>
+                        <h3>100% RERA Verified</h3>
+                        <p>Every home listed on our portal comes with an authentic State Regulatory Authority registration number and government-approved structural permits.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-box__icon">💰</div>
+                        <h3>Zero Secret Commissions</h3>
+                        <p>Enjoy direct buyer-to-developer or buyer-to-owner transactions. No hidden middleman commissions or inflated square footage calculations.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-box__icon">🤝</div>
+                        <h3>Guided Site Visits</h3>
+                        <p>Book private walkthrough appointments with certified property executives who assist with document verification and bank loan disbursements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             SECTION 7: 3-MEMBER TEAM PROJECT ATTRIBUTION (Viva Defense Guide)
+             ================================================================== -->
+        <section class="site-container" id="teamSection">
+            <div class="team-credits-section">
+                <div class="site-container">
+                    <div class="section-header" style="color: #ffffff;">
+                        <span class="section-tag" style="color: #93c5fd;">Academic Project Collaboration</span>
+                        <h2 class="section-title" style="color: #ffffff;">3-Member Engineering Team Breakdown</h2>
+                        <p class="section-subtitle" style="color: #cbd5e1;">
+                            Developed as an academic web development submission demonstrating modular architecture and separation of concerns across HTML, CSS, and Vanilla JavaScript.
+                        </p>
+                    </div>
+
+                    <div class="team-grid">
+                        <!-- Dev 1: Anmol -->
+                        <div class="team-member-card">
+                            <div class="team-member-avatar">A</div>
+                            <h4>Anmol</h4>
+                            <div class="team-member-role">Dev 1: Data & State Architect</div>
+                            <p class="team-member-desc">
+                                Master real estate dataset (12 verified properties), reactive multi-criteria filter engine, live keyword search, 5 sorting algorithms, and LocalStorage favorites state management.
+                            </p>
+                        </div>
+
+                        <!-- Dev 2: Mukesh -->
+                        <div class="team-member-card">
+                            <div class="team-member-avatar" style="background: linear-gradient(135deg, #059669, #10b981);">M</div>
+                            <h4>Mukesh</h4>
+                            <div class="team-member-role">Dev 2: UI/UX & Responsive Layout</div>
+                            <p class="team-member-desc">
+                                Semantic HTML5 structure, CSS variables design system (<code>main.css</code>), mobile hamburger drawer navigation, property card grid, and responsive media queries (<code>responsive.css</code>).
+                            </p>
+                        </div>
+
+                        <!-- Dev 3: Kunal -->
+                        <div class="team-member-card">
+                            <div class="team-member-avatar" style="background: linear-gradient(135deg, #d97706, #f59e0b);">K</div>
+                            <h4>Kunal</h4>
+                            <div class="team-member-role">Dev 3: Interactive Tools & Forms</div>
+                            <p class="team-member-desc">
+                                Real-time Mortgage EMI loan calculator, Quick-View property details modal with photo gallery switcher, and site visit booking form with regex input validation (<code>components.css</code>).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================
+         SECTION 8: PROPERTY DETAILS MODAL (Markup by Mukesh, Script by Kunal)
+         ====================================================================== -->
+    <div class="modal-overlay" id="propertyDetailsModal" role="dialog" aria-modal="true" aria-labelledby="modalPropertyTitle">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-header__info">
+                    <span class="badge badge--sale" id="modalPropertyTypeBadge">Apartment • For Sale</span>
+                    <h2 id="modalPropertyTitle">Property Title</h2>
+                    <p id="modalPropertyAddress">📍 Local Address</p>
+                </div>
+                <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            </div>
+
+            <!-- Tab Switcher inside Modal -->
+            <div class="modal-tabs-bar">
+                <button type="button" class="modal-tab-btn is-active" data-modal-tab="details">Property Specs & Gallery</button>
+                <button type="button" class="modal-tab-btn" data-modal-tab="tour">Schedule a Site Visit</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Tab Pane 1: Specs, Gallery, Amenities -->
+                <div class="modal-tab-content is-active" id="modalTabPane_details">
+                    <div class="modal-gallery">
+                        <div class="modal-main-img-box">
+                            <img id="modalMainImage" src="" alt="Property main perspective" />
+                        </div>
+                        <div class="modal-thumbs-strip" id="modalThumbnailsStrip">
+                            <!-- Thumbnails dynamically rendered -->
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 style="font-size: 22px; color: #1e3a8a; margin: 0;" id="modalPropertyPrice">₹0</h3>
+                        <span style="font-size: 12px; font-weight: 700; color: #059669; background: #ecfdf5; padding: 4px 10px; border-radius: 4px;" id="modalPropertyRera">RERA Verified</span>
+                    </div>
+
+                    <p style="font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 20px;" id="modalPropertyDesc">
+                        Detailed description text...
+                    </p>
+
+                    <h4 style="font-size: 15px; margin-bottom: 10px; color: #0f172a;">Architectural Specifications</h4>
+                    <table class="modal-specs-table">
+                        <tbody>
+                            <tr>
+                                <th>Bedrooms (BHK)</th>
+                                <td id="modalSpecBeds">-</td>
+                            </tr>
+                            <tr>
+                                <th>Bathrooms</th>
+                                <td id="modalSpecBaths">-</td>
+                            </tr>
+                            <tr>
+                                <th>Carpet Area</th>
+                                <td id="modalSpecArea">-</td>
+                            </tr>
+                            <tr>
+                                <th>Furnishing Status</th>
+                                <td id="modalSpecFurnish">-</td>
+                            </tr>
+                            <tr>
+                                <th>Vastu Facing</th>
+                                <td id="modalSpecFacing">-</td>
+                            </tr>
+                            <tr>
+                                <th>Floor Level</th>
+                                <td id="modalSpecFloor">-</td>
+                            </tr>
+                            <tr>
+                                <th>Reserved Parking</th>
+                                <td id="modalSpecParking">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 style="font-size: 15px; margin: 20px 0 10px 0; color: #0f172a;">Verified Society Amenities</h4>
+                    <ul class="modal-amenities-grid" id="modalAmenitiesList">
+                        <!-- Amenities dynamically injected -->
+                    </ul>
+                </div>
+
+                <!-- Tab Pane 2: Schedule a Visit Form -->
+                <div class="modal-tab-content" id="modalTabPane_tour">
+                    <form class="booking-form" id="tourBookingForm">
+                        <input type="hidden" id="tourFormPropertyId" value="" />
+                        <div style="background-color: #f1f5f9; padding: 12px; border-radius: 6px; font-size: 13px; font-weight: 600; color: #1e3a8a;" id="tourBookingPropTitle">
+                            Property: Selected Listing
+                        </div>
+
+                        <div class="booking-form-grid">
+                            <div class="booking-input-group">
+                                <label for="tourNameInput">Full Name *</label>
+                                <input type="text" id="tourNameInput" placeholder="e.g. Rahul Sharma" required />
+                            </div>
+
+                            <div class="booking-input-group">
+                                <label for="tourEmailInput">Email Address *</label>
+                                <input type="email" id="tourEmailInput" placeholder="e.g. rahul@example.com" required />
+                            </div>
+                        </div>
+
+                        <div class="booking-form-grid">
+                            <div class="booking-input-group">
+                                <label for="tourPhoneInput">Mobile Number (10 digits) *</label>
+                                <input type="tel" id="tourPhoneInput" placeholder="e.g. 9876543210" required />
+                            </div>
+
+                            <div class="booking-input-group">
+                                <label for="tourDateInput">Preferred Date of Visit *</label>
+                                <input type="date" id="tourDateInput" required />
+                            </div>
+                        </div>
+
+                        <div class="booking-form-grid">
+                            <div class="booking-input-group">
+                                <label for="tourTimeSlotInput">Preferred Time Slot *</label>
+                                <select id="tourTimeSlotInput">
+                                    <option value="Morning (10:00 AM - 1:00 PM)">Morning (10:00 AM - 1:00 PM)</option>
+                                    <option value="Afternoon (1:00 PM - 4:00 PM)">Afternoon (1:00 PM - 4:00 PM)</option>
+                                    <option value="Evening (4:00 PM - 7:00 PM)">Evening (4:00 PM - 7:00 PM)</option>
+                                </select>
+                            </div>
+
+                            <div class="booking-input-group">
+                                <label for="tourNotesInput">Special Requirements</label>
+                                <input type="text" id="tourNotesInput" placeholder="e.g. Need family cab pickup" />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--md" style="margin-top: 10px;">
+                            Confirm Site Visit Appointment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Scroll-To-Top Button -->
+    <button type="button" class="scroll-to-top-btn" id="scrollToTopBtn" aria-label="Scroll back to top" title="Scroll to top">
+        ↑
+    </button>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- ======================================================================
+         SECTION 9: SITE FOOTER (Authored by Mukesh)
+         ====================================================================== -->
+    <footer class="site-footer">
+        <div class="site-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🏰 DreamNest Realty</h3>
+                    <p>India's premier transparent real estate discovery platform. Connecting discerning homebuyers with verified builders and authentic resale properties.</p>
+                    <p style="font-size: 13px; color: #64748b;">RERA License: IND-RERA-2026-98124</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Top Metro Cities</h4>
+                    <ul class="footer-links">
+                        <li><a href="#filterSection">Mumbai Real Estate</a></li>
+                        <li><a href="#filterSection">Bengaluru Tech Corridor</a></li>
+                        <li><a href="#filterSection">Delhi NCR Penthouses</a></li>
+                        <li><a href="#filterSection">Pune Luxury Villas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#mortgageCalculatorSection">Mortgage Calculator</a></li>
+                        <li><a href="#filterSection">Saved Wishlist</a></li>
+                        <li><a href="#featuresSection">RERA Verification Guide</a></li>
+                        <li><a href="#teamSection">Team Viva Defense</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Office & Inquiries</h4>
+                    <ul class="footer-links">
+                        <li>📍 Brigade Plaza, MG Road, Bengaluru</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ contact@dreamnest.example</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 DreamNest Real Estate Project • Academic Web Development Collaboration.</p>
+                <p>Built with Semantic HTML5, CSS3 Grid/Flexbox & Vanilla JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================================
+         JAVASCRIPT MODULES IN EXECUTION ORDER:
+         1. Data Layer (Anmol - Dev 1)
+         2. LocalStorage State (Anmol - Dev 1)
+         3. Search & Filter Engine (Anmol - Dev 1)
+         4. Mortgage Loan Calculator (Kunal - Dev 3)
+         5. Quick-View Modal & Booking Form (Kunal - Dev 3)
+         ====================================================================== -->
+    <script src="js/properties-data.js"></script>
+    <script src="js/storage-state.js"></script>
+    <script src="js/search-filter.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/modal-contact.js"></script>
+
+    <!-- Mukesh's Mobile Navigation Drawer Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
+            var navLinks = document.querySelector('.nav-links');
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function () {
+                    navLinks.classList.toggle('is-open');
+                });
+            }
+
+            // Header Favorites shortcut button
+            var favHeaderBtn = document.getElementById('headerFavoritesBtn');
+            if (favHeaderBtn) {
+                favHeaderBtn.addEventListener('click', function () {
+                    var favToggleBtn = document.getElementById('toggleFavoritesViewBtn');
+                    if (favToggleBtn) {
+                        favToggleBtn.click();
+                        document.getElementById('filterSection').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

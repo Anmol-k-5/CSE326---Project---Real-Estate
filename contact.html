@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport configuration for mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamNest Realty - Book a Visit & Contact Us</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; line-height: 1.6; margin: 0; padding: 15px; background-color: #f4f6f9; color: #333333;">
+
+    <!-- ==========================================
+         MAIN WRAPPER CONTAINER
+         ========================================== -->
+    <div style="max-width: 850px; margin: 0 auto; background-color: #ffffff; padding: 25px; border: 1px solid #dcdcdc; border-radius: 6px;">
+
+        <!-- ==========================================
+             SECTION 1: HEADER & WEBSITE BRANDING
+             ========================================== -->
+        <header style="text-align: center; border-bottom: 2px solid #2b5b84; padding-bottom: 15px; margin-bottom: 15px;">
+            <h1 style="color: #2b5b84; margin-bottom: 5px;">DreamNest Realty</h1>
+            <p style="margin: 0; color: #555555; font-size: 15px;">Your trusted platform for verified homes, apartments, and rental properties.</p>
+        </header>
+
+        <!-- ==========================================
+             SHARED NAVIGATION BAR (Links all 4 pages)
+             ========================================== -->
+        <nav style="background-color: #e8eff5; padding: 10px 15px; border-radius: 4px; margin-bottom: 25px; text-align: center;">
+            <a href="index.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px;">Home</a> |
+            <a href="properties.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px;">All Properties</a> |
+            <a href="contact.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px; border-bottom: 2px solid #2b5b84; padding-bottom: 2px;">Book a Visit</a> |
+            <a href="about.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px;">About & Team</a>
+        </nav>
+
+        <!-- ==========================================
+             PAGE TITLE & INTRO
+             ========================================== -->
+        <section style="margin-bottom: 20px;">
+            <h2 style="color: #2b5b84; margin-top: 0; border-bottom: 1px solid #cfd8dc; padding-bottom: 8px;">Schedule an On-Site Property Visit</h2>
+            <p style="font-size: 14px; color: #555555;">
+                We encourage all prospective buyers and tenants to inspect properties in person. Fill in your preferred date and time below, and our verified area property coordinator will greet you at the venue.
+            </p>
+        </section>
+
+        <!-- ==========================================
+             FEATURE 10: COMPREHENSIVE BOOKING INQUIRY FORM
+             ========================================== -->
+        <main style="margin-bottom: 30px;">
+            <form action="#" method="post">
+                <fieldset style="border: 1px solid #b0bec5; border-radius: 6px; padding: 20px; background-color: #fafbfc;">
+                    <legend style="font-weight: bold; color: #2b5b84; padding: 0 8px; font-size: 15px;">Feature 10: Property Visit Appointment Form</legend>
+
+                    <!-- Property Selection Dropdown -->
+                    <div style="margin-bottom: 14px;">
+                        <label for="form-property" style="display: block; font-weight: bold; margin-bottom: 4px;">Select Property to Visit: *</label>
+                        <select id="form-property" name="property" required style="width: 100%; max-width: 450px; padding: 8px; border: 1px solid #90a4ae; border-radius: 4px; background-color: #ffffff; box-sizing: border-box;">
+                            <option value="">-- Choose a Property --</option>
+                            <option value="greenfield-apt">Greenfield Heights 3BHK Apartment (Indiranagar) - For Sale</option>
+                            <option value="sunrise-villa">Sunrise Gardens 4BHK Duplex Villa (Whitefield) - For Rent</option>
+                            <option value="royal-palms-plot">Royal Palms Gated Villa Plot (Devanahalli) - For Sale</option>
+                            <option value="general-inquiry">General Inquiry / Multiple Properties</option>
+                        </select>
+                    </div>
+
+                    <!-- Full Name -->
+                    <div style="margin-bottom: 14px;">
+                        <label for="visitor-name" style="display: block; font-weight: bold; margin-bottom: 4px;">Full Name: *</label>
+                        <input type="text" id="visitor-name" name="fullname" required placeholder="e.g., Rahul Sharma" style="width: 100%; max-width: 450px; padding: 8px; border: 1px solid #90a4ae; border-radius: 4px; box-sizing: border-box;">
+                    </div>
+
+                    <!-- Email Address -->
+                    <div style="margin-bottom: 14px;">
+                        <label for="visitor-email" style="display: block; font-weight: bold; margin-bottom: 4px;">Email Address: *</label>
+                        <input type="email" id="visitor-email" name="email" required placeholder="e.g., rahul.sharma@example.com" style="width: 100%; max-width: 450px; padding: 8px; border: 1px solid #90a4ae; border-radius: 4px; box-sizing: border-box;">
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div style="margin-bottom: 14px;">
+                        <label for="visitor-phone" style="display: block; font-weight: bold; margin-bottom: 4px;">Mobile Phone Number: *</label>
+                        <input type="tel" id="visitor-phone" name="phone" required placeholder="e.g., 9876543210" style="width: 100%; max-width: 450px; padding: 8px; border: 1px solid #90a4ae; border-radius: 4px; box-sizing: border-box;">
+                    </div>
+
+                    <!-- Preferred Visit Date -->
+                    <div style="margin-bottom: 14px;">
+                        <label for="visit-date" style="display: block; font-weight: bold; margin-bottom: 4px;">Preferred Visit Date: *</label>
+                        <input type="date" id="visit-date" name="visit_date" required style="padding: 8px; border: 1px solid #90a4ae; border-radius: 4px; background-color: #ffffff;">
+                    </div>
+
+                    <!-- Preferred Time Slot (Radio options) -->
+                    <div style="margin-bottom: 14px;">
+                        <span style="display: block; font-weight: bold; margin-bottom: 4px;">Preferred Time Window: *</span>
+                        <label style="margin-right: 15px; cursor: pointer; font-size: 14px;">
+                            <input type="radio" name="timeslot" value="morning" checked> Morning (10:00 AM - 01:00 PM)
+                        </label><br>
+                        <label style="margin-right: 15px; cursor: pointer; font-size: 14px;">
+                            <input type="radio" name="timeslot" value="afternoon"> Afternoon (02:00 PM - 05:00 PM)
+                        </label><br>
+                        <label style="cursor: pointer; font-size: 14px;">
+                            <input type="radio" name="timeslot" value="evening"> Evening (05:00 PM - 07:00 PM)
+                        </label>
+                    </div>
+
+                    <!-- Number of Visitors -->
+                    <div style="margin-bottom: 14px;">
+                        <label for="visitor-count" style="display: block; font-weight: bold; margin-bottom: 4px;">Estimated Attendees:</label>
+                        <input type="number" id="visitor-count" name="attendees" min="1" max="8" value="2" style="padding: 7px; width: 70px; border: 1px solid #90a4ae; border-radius: 4px;">
+                    </div>
+
+                    <!-- Special Message / Request -->
+                    <div style="margin-bottom: 16px;">
+                        <label for="visitor-notes" style="display: block; font-weight: bold; margin-bottom: 4px;">Additional Questions or Specific Requirements:</label>
+                        <textarea id="visitor-notes" name="notes" rows="3" placeholder="e.g., Looking for immediate possession, need loan guidance, etc..." style="width: 100%; max-width: 450px; padding: 8px; border: 1px solid #90a4ae; border-radius: 4px; box-sizing: border-box;"></textarea>
+                    </div>
+
+                    <!-- Confirmation Checkbox -->
+                    <div style="margin-bottom: 18px;">
+                        <label style="font-size: 13px; cursor: pointer; color: #37474f;">
+                            <input type="checkbox" name="terms" required> I confirm my contact details are correct for booking verification.
+                        </label>
+                    </div>
+
+                    <!-- Form Action Buttons -->
+                    <div>
+                        <button type="submit" style="background-color: #2e7d32; color: #ffffff; padding: 9px 22px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold;">Submit Visit Request</button>
+                        <button type="reset" style="background-color: #78909c; color: #ffffff; padding: 9px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; margin-left: 10px;">Clear Form</button>
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+
+        <!-- ==========================================
+             OFFICE HOURS & COORDINATION SCHEDULE TABLE
+             ========================================== -->
+        <section style="margin-bottom: 30px;">
+            <h3 style="color: #2b5b84; margin-bottom: 8px;">Site Visit Hours & Coordinator Timings</h3>
+            <table border="1" cellpadding="7" cellspacing="0" style="width: 100%; max-width: 500px; border-collapse: collapse; border-color: #cfd8dc; font-size: 13px; text-align: left;">
+                <thead style="background-color: #eceff1;">
+                    <tr>
+                        <th>Day Range</th>
+                        <th>Visit Timings</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday to Friday</td>
+                        <td>09:30 AM - 06:30 PM</td>
+                        <td>Regular Appointments</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday & Sunday</td>
+                        <td>10:00 AM - 07:00 PM</td>
+                        <td>Prime Weekend Viewing (Advance Booking)</td>
+                    </tr>
+                    <tr>
+                        <td>Public Holidays</td>
+                        <td>11:00 AM - 04:00 PM</td>
+                        <td>On-Call Support Only</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ==========================================
+             FREQUENTLY ASKED QUESTIONS (<details>)
+             ========================================== -->
+        <section style="margin-bottom: 30px;">
+            <h3 style="color: #2b5b84; margin-bottom: 8px;">Frequently Asked Questions</h3>
+
+            <details style="border: 1px solid #cfd8dc; background-color: #f8fafc; border-radius: 4px; padding: 8px 12px; margin-bottom: 8px; max-width: 600px;">
+                <summary style="font-weight: bold; cursor: pointer; color: #2b5b84;">Is there any charge or fee for booking a site visit?</summary>
+                <p style="margin: 8px 0 4px 0; font-size: 13px; color: #37474f;">
+                    No, all property visits coordinated through DreamNest Realty are 100% free of charge.
+                </p>
+            </details>
+
+            <details style="border: 1px solid #cfd8dc; background-color: #f8fafc; border-radius: 4px; padding: 8px 12px; margin-bottom: 8px; max-width: 600px;">
+                <summary style="font-weight: bold; cursor: pointer; color: #2b5b84;">What documents should I bring during a visit?</summary>
+                <p style="margin: 8px 0 4px 0; font-size: 13px; color: #37474f;">
+                    Please carry one government-issued photo ID (Aadhaar / Driving License) for security gate entry at the residential society.
+                </p>
+            </details>
+        </section>
+
+        <!-- ==========================================
+             SECTION: FOOTER & DIRECT CONTACT DETAILS
+             (Feature 12: Footer with mailto & tel links)
+             ========================================== -->
+        <footer style="margin-top: 35px; border-top: 2px solid #2b5b84; padding-top: 15px; text-align: center; font-size: 13px; color: #546e7a;">
+            <p style="margin: 4px 0;"><strong>DreamNest Realty Office</strong> | 2nd Floor, Brigade Plaza, MG Road, Bangalore - 560001</p>
+            <p style="margin: 4px 0;">
+                Direct Inquiries: 
+                <a href="mailto:info@dreamnestrealty.example" style="color: #2b5b84; text-decoration: underline;">info@dreamnestrealty.example</a> 
+                &nbsp;|&nbsp; 
+                Phone: 
+                <a href="tel:+919876543210" style="color: #2b5b84; text-decoration: underline;">+91 98765 43210</a>
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="index.html" style="color: #2b5b84;">Home</a> &bull; 
+                <a href="properties.html" style="color: #2b5b84;">Properties</a> &bull; 
+                <a href="contact.html" style="color: #2b5b84;">Booking</a> &bull; 
+                <a href="about.html" style="color: #2b5b84;">About Us</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 12px; color: #90a4ae;">
+                &copy; 2026 DreamNest Real Estate Listing Project &bull; 1st Year Engineering Academic Submission
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

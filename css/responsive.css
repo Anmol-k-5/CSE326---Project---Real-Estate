@@ -1,0 +1,321 @@
+/* ==========================================================================
+   File: responsive.css
+   Author: Mukesh (Dev 2 - UI/UX Architecture & Layout)
+   GitHub: @mukeshkashyap-cse
+   Description: Responsive media queries for desktop, tablet, and mobile displays.
+                Includes mobile hamburger navigation and print stylesheets.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TABLET BREAKPOINT (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+    .site-container {
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    /* Filter Grid adjustments */
+    .filter-grid-row-1 {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .filter-grid-row-2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    /* Properties grid 2-columns */
+    .properties-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Features 3-column to 3-column tight */
+    .features-grid {
+        gap: 16px;
+    }
+
+    /* Calculator side-by-side stays balanced */
+    .calc-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    /* Footer 4-columns to 2-columns */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   2. MOBILE BREAKPOINT (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    /* Navbar Hamburger Setup */
+    .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 1100;
+    }
+
+    .mobile-menu-toggle span {
+        width: 100%;
+        height: 2.5px;
+        background-color: var(--text-primary);
+        border-radius: 2px;
+        transition: all var(--transition-fast);
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background-color: #ffffff;
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+        box-shadow: var(--shadow-xl);
+        transform: translateY(-150%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+    }
+
+    .nav-links.is-open {
+        transform: translateY(0);
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        padding: 44px 0 50px 0;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    .hero-quick-stats {
+        gap: 16px;
+    }
+
+    .hero-stat-item strong {
+        font-size: 20px;
+    }
+
+    /* Filter Panel collapses to single column */
+    .filter-panel-section {
+        margin-top: -20px;
+    }
+
+    .filter-card {
+        padding: 18px;
+    }
+
+    .filter-grid-row-1 {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .filter-grid-row-2 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .filter-actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .filter-buttons-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filter-buttons-group button {
+        width: 100%;
+    }
+
+    /* Catalog Header */
+    .catalog-header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .results-sort-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Property Cards 1-Column */
+    .properties-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .property-card__media {
+        height: 200px;
+    }
+
+    /* Calculator Widget */
+    .calculator-card {
+        padding: 20px;
+        margin: 24px 0;
+    }
+
+    .calculator-card__title {
+        font-size: 20px;
+    }
+
+    .calc-emi-highlight__amount {
+        font-size: 26px;
+    }
+
+    .calc-pills-row {
+        flex-wrap: wrap;
+    }
+
+    /* Modal dialog */
+    .modal-dialog {
+        max-height: 94vh;
+        width: 100%;
+    }
+
+    .modal-header {
+        padding: 16px 20px;
+    }
+
+    .modal-body {
+        padding: 18px;
+    }
+
+    .modal-main-img-box {
+        height: 220px;
+    }
+
+    .booking-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-amenities-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Features Section */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Team Section */
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Toast Pills */
+    .toast-container {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .toast-pill {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   3. SMALL MOBILE PHONES (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+    .site-header .navbar {
+        height: 64px;
+    }
+
+    .brand-logo {
+        font-size: 19px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-quick-stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .modal-amenities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. PRINT MEDIA STYLESHEET
+   -------------------------------------------------------------------------- */
+@media print {
+    .site-header,
+    .filter-panel-section,
+    .calculator-card,
+    .site-footer,
+    .modal-overlay,
+    .toast-container,
+    .scroll-to-top-btn {
+        display: none !important;
+    }
+
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 12pt;
+    }
+
+    .property-card {
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #cccccc !important;
+        margin-bottom: 20px;
+    }
+
+    .properties-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
