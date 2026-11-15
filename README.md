@@ -80,6 +80,7 @@ CSE326---Project---Real-Estate/
 6. **Property Quick-View Modal:** Open comprehensive details, specifications tables, verified amenities checklists, and multi-perspective photo galleries.
 7. **Site Walkthrough Booking with Regex Validation:** Validates Indian 10-digit phone numbers (`^[6-9]\d{9}$`), email format, and blocks past dates on the date picker.
 8. **Fully Responsive:** Seamless layout transition from 4K desktop screens down to 360px mobile viewports with an off-canvas navigation menu.
+9. **Persistent Dark / Light Theme System:** One-click theme switcher (🌙 / ☀️) persisted in LocalStorage across all 7 pages with zero screen-flicker on reload. Dynamically adapts CSS variables for midnight slate backgrounds (`#0b1120`, `#1e293b`), card borders, typography, and form inputs.
 
 ---
 
