@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CA1 Project Submission - CSE326</title>
+<style>
+  body {
+    font-family: Arial, Calibri, sans-serif;
+    margin: 40px;
+    color: #111827;
+  }
+  h2 {
+    color: #1e3a8a;
+    border-bottom: 2px solid #1e3a8a;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+  }
+  p.subtitle {
+    color: #4b5563;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  th, td {
+    border: 1px solid #9ca3af;
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    font-weight: bold;
+  }
+  a {
+    color: #2563eb;
+    text-decoration: underline;
+    word-break: break-all;
+  }
+  .highlight {
+    background-color: #fef3c7;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  .notes {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+  <h2>LOVELY PROFESSIONAL UNIVERSITY</h2>
+  <p class="subtitle"><strong>Academic Tasks (26271) &bull; CA1 Project-Based Assessment Submission File</strong></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 18%;">Project Name &amp; Title</th>
+        <th style="width: 12%;">Team Name</th>
+        <th style="width: 10%;">Course Code</th>
+        <th style="width: 18%;">Registration Number(s)</th>
+        <th style="width: 17%;">GitHub Link</th>
+        <th style="width: 15%;">Deployed Link</th>
+        <th style="width: 10%;">Video Presentation Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <strong>DreamNest:</strong> Verified Real Estate Listing &amp; Financial Mortgage Platform
+        </td>
+        <td>
+          DreamNest Team
+        </td>
+        <td>
+          <strong>CSE326</strong>
+        </td>
+        <td>
+          1. Anmol (Reg No: <em>[Enter Reg No]</em>)<br>
+          2. Mukesh (Reg No: <em>[Enter Reg No]</em>)<br>
+          3. Kunal (Reg No: <em>[Enter Reg No]</em>)
+        </td>
+        <td>
+          <a href="https://github.com/Anmol-k-5/CSE326---Project---Real-Estate">https://github.com/Anmol-k-5/CSE326---Project---Real-Estate</a>
+        </td>
+        <td>
+          <a href="https://anmol-k-5.github.io/CSE326---Project---Real-Estate/">https://anmol-k-5.github.io/CSE326---Project---Real-Estate/</a>
+        </td>
+        <td>
+          <span class="highlight">[Paste Video Link Here]</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <p><strong>Instructions for Final UMS Upload:</strong></p>
+    <ol>
+      <li>Replace <em>[Enter Reg No]</em> with your team's actual LPU Registration Numbers.</li>
+      <li>Record a 3–4 minute video presentation demonstrating the live project (with Anmol, Mukesh, and Kunal speaking).</li>
+      <li>Upload the video to Google Drive (set access to <em>"Anyone with the link can view"</em>) or YouTube (Unlisted), and paste the link into the Video Presentation Link column.</li>
+      <li>Upload this file on UMS as your official CA1 Submission File.</li>
+    </ol>
+  </div>
+
+</body>
+</html>
