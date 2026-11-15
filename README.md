@@ -8,7 +8,7 @@
 
 ## 📖 Project Overview
 
-**DreamNest** is a full-featured real estate discovery portal and financial planning application built without external frameworks or dependencies. It allows homebuyers and renters to search across 12 verified residential listings in 8 Indian metropolitan zones, apply real-time multi-criteria filters, calculate monthly home loan EMIs, preview architectural blueprints and photo galleries via a Quick-View modal, and book scheduled site walkthrough appointments with client-side form validation.
+**DreamNest** is a full-featured real estate discovery portal and financial planning application built without external frameworks or dependencies. It allows homebuyers and renters to search across 60+ verified residential listings (64 properties) in 8 Indian metropolitan zones, apply real-time multi-criteria filters, calculate monthly home loan EMIs, preview architectural blueprints and photo galleries via a Quick-View modal, and book scheduled site walkthrough appointments with client-side form validation.
 
 ---
 
@@ -34,7 +34,7 @@
 
 | Member | Role & Module | Files Owned | Core Responsibilities |
 | :--- | :--- | :--- | :--- |
-| **Anmol**<br>`@Anmol-k-5` | **Data Layer & Search Engine** | `js/properties-data.js`<br>`js/storage-state.js`<br>`js/search-filter.js` | • Master catalog of 12 verified listings with RERA numbers.<br>• Reactive multi-criteria filter pipeline (city, budget, BHK, purpose).<br>• 5 sorting algorithms & dynamic active filter chips.<br>• Client-side `localStorage` state for Wishlist, Comparison, and History. |
+| **Anmol**<br>`@Anmol-k-5` | **Data Layer & Search Engine** | `js/properties-data.js`<br>`js/storage-state.js`<br>`js/search-filter.js` | • Master catalog of 60+ verified listings with RERA numbers.<br>• Reactive multi-criteria filter pipeline (city, budget, BHK, purpose).<br>• 5 sorting algorithms & dynamic active filter chips.<br>• Client-side `localStorage` state for Wishlist, Comparison, and History. |
 | **Mukesh**<br>`@mukeshkashyap-cse` | **UI/UX Architecture & Responsive Layout** | `index.html`<br>`css/main.css`<br>`css/responsive.css` | • Semantic HTML5 document architecture & accessible ARIA labels.<br>• CSS variables design tokens (colors, typography, elevation).<br>• Mobile hamburger drawer navigation & fluid breakpoints.<br>• Property card grid, hover transitions, and sticky glassmorphic header. |
 | **Kunal**<br>`@kp4339536-netizen` | **Interactive Tools & Utilities** | `js/calculator.js`<br>`js/modal-contact.js`<br>`css/components.css` | • Real-time mathematical Home Loan / EMI calculator.<br>• Quick-View Property Modal with thumbnail gallery switcher.<br>• "Schedule a Site Visit" booking form with 10-digit mobile & email validation.<br>• Floating toast notification system and FAQ accordions. |
 
@@ -61,7 +61,7 @@ CSE326---Project---Real-Estate/
 │   └── components.css          <-- Kunal: Modal, 3-in-1 calculator, toast, compare matrix styles
 │
 └── js/
-    ├── properties-data.js      <-- Anmol: 12 verified real estate listings dataset & query API
+    ├── properties-data.js      <-- Anmol: 64 verified real estate listings dataset & query API
     ├── storage-state.js        <-- Anmol: LocalStorage persistence & Pub/Sub event bus
     ├── search-filter.js        <-- Anmol: Live search, filter pipeline, sorting, active chips
     ├── calculator.js           <-- Kunal: Mortgage EMI & financial calculation engine
@@ -88,7 +88,7 @@ CSE326---Project---Real-Estate/
 
 ### 👤 Anmol (Developer 1)
 * **Viva Script:**
-  > *"My responsibility was the data layer, search algorithms, and client-side persistence. I designed the structured dataset representing 12 verified Indian properties with complete architectural specs and RERA registration codes. I developed the multi-criteria filter pipeline using pure functional JavaScript (`.filter()`, `.map()`, `.reduce()`). To persist user bookmarks without a backend database, I implemented a LocalStorage state engine with a publish/subscribe event listener pattern."*
+  > *"My responsibility was the data layer, search algorithms, and client-side persistence. I designed the structured dataset representing 64 verified Indian properties across 8 metros with complete architectural specs and RERA registration codes. I developed the multi-criteria filter pipeline using pure functional JavaScript (`.filter()`, `.map()`, `.reduce()`). To persist user bookmarks without a backend database, I implemented a LocalStorage state engine with a publish/subscribe event listener pattern."*
 * **Key Viva Q&A:**
   - **Q:** *Why use `localStorage` instead of cookies?*  
     **A:** LocalStorage provides up to 5MB of client-side key-value storage that persists across sessions and is never transmitted over HTTP headers, reducing network overhead.
