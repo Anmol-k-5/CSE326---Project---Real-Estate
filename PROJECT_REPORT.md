@@ -22,9 +22,9 @@
 
 ## 1. ABSTRACT
 
-Modern real estate portals often overwhelm home seekers with intrusive advertisements, fraudulent listings, unverified carpet areas, and hidden middleman commissions. **DreamNest** was conceptualized and developed as a transparent, high-performance web platform designed to streamline real estate discovery and investment decision-making. 
+Modern real estate portals often overwhelm home seekers with intrusive advertisements, fraudulent listings, unverified carpet areas, and hidden middleman commissions. **DreamNest** was conceptualized and developed as a transparent, high-performance web platform designed to streamline real estate discovery and investment decision-making across 64 verified properties in 8 Indian metropolitan zones (Mumbai, Bengaluru, Delhi NCR, Pune, Hyderabad, Goa, Chennai, Kolkata).
 
-The project was engineered using pure web standards—Semantic HTML5, CSS3 Custom Properties (Variables), CSS Grid/Flexbox, and Vanilla ECMAScript 6+—without relying on heavy frameworks or external runtime dependencies. The system demonstrates a modular 3-tier architecture separating the Data/State layer, the UI/Design System, and Client-Side Interactive Tools. Key innovations include real-time multi-criteria filtering with debouncing, zero-backend `localStorage` persistence for bookmarks and comparison queues, a real-time mathematical Home Loan / EMI amortization calculator, and a Quick-View property modal equipped with client-side regex input validation.
+The project was engineered using pure web standards—Semantic HTML5, CSS3 Custom Properties (Variables), CSS Grid/Flexbox, and Vanilla ECMAScript 6+—without relying on heavy frameworks or external runtime dependencies. The system demonstrates a modular 3-tier architecture separating the Data/State layer, the UI/Design System, and Client-Side Interactive Tools. Key innovations include real-time multi-criteria filtering with debouncing across 64 properties, zero-backend `localStorage` persistence for bookmarks and comparison queues, a real-time mathematical Home Loan / EMI amortization calculator, state stamp duty and rental yield estimators, an accessible Dark/Light mode theming system with zero screen-flicker, an interactive customer review submission engine with star rating selector, and a Quick-View property modal equipped with client-side regex input validation.
 
 ---
 
@@ -97,8 +97,9 @@ The application follows a decoupled model-view-controller (MVC) inspired client-
   - Engineered the master application layout using semantic HTML5 tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`) and ARIA landmarks.
 * **`css/main.css`:**
   - Established a centralized design system utilizing CSS Custom Properties (`:root` variables) for color hierarchies, font families, shadows, and radii.
+  - Implemented an accessible, high-contrast Dark Mode stylesheet (`[data-theme="dark"]`) with deep slate backgrounds (`#0b1120`, `#1e293b`), ivory typography (`#f8fafc`), illuminated focus states, and zero-flicker inline head loader.
   - Designed a sticky glassmorphic navigation bar (`backdrop-filter: blur(12px)`), an engaging hero search banner, and a 3-column auto-fill property card grid (`grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))`).
-  - Added smooth card lift animations (`transform: translateY(-6px)`) and interactive badge pills.
+  - Added smooth card lift animations (`transform: translateY(-6px)`), interactive badge pills, and circular theme switcher button.
 * **`css/responsive.css`:**
   - Engineered responsive media queries for desktop, tablet, and mobile viewports.
   - Implemented an animated mobile hamburger navigation drawer (`transform: translateY(-150%)` to `0`).
@@ -108,8 +109,9 @@ The application follows a decoupled model-view-controller (MVC) inspired client-
 * **`js/calculator.js`:**
   - Developed an interactive Home Loan / EMI calculator with sliders for Down Payment (10%–60%), Loan Tenure (5–30 Years), and Interest Rates (6.5%–14%).
   - Integrated shortcut hooks (`prefillPrice`) allowing users to click "Calculate EMI" on any property card to instantly populate that property's price into the calculator.
-* **`js/modal-contact.js`:**
+* **`js/modal-contact.js` & Interactive Review Engine:**
   - Built a lightweight Quick-View modal popup with photo gallery thumbnail switching and backdrop blur dismissals.
+  - Engineered an interactive community Customer Review submission engine on the homepage with a 5-star rating picker, client-side input validation, initials avatar generator, and LocalStorage persistence (`dreamnest_user_reviews`).
   - Engineered a site-visit appointment form with strict client-side validation:
     * 10-digit Indian mobile regex: `^[6-9]\d{9}$`
     * RFC 5322 compliant email regex: `^[^\s@]+@[^\s@]+\.[^\s@]+$`
@@ -123,7 +125,7 @@ The application follows a decoupled model-view-controller (MVC) inspired client-
 
 | # | Webpage | File Name | Key Features & Functional Modules |
 | :---: | :--- | :--- | :--- |
-| **1** | **Home** | `index.html` | Hero spotlight banner with instant search redirect, verified property carousel, popular city discovery grid, platform value pillars, customer testimonials, and universal header/footer. |
+| **1** | **Home** | `index.html` | Hero spotlight banner with instant search redirect, 60+ listings quick stats, verified property carousel, popular city discovery grid, platform value pillars, interactive customer reviews submission engine with 5-star rating picker and LocalStorage persistence, dark/light theme toggle, and universal header/footer. |
 | **2** | **All Properties** | `properties.html` | Master catalog of 60+ verified listings (64 properties across 8 metros), debounced search bar, multi-criteria filter panel (City, Type, Intent, Budget slider, BHK checkboxes), active filter chips, sort engine, and quick modal preview. |
 | **3** | **Property Detail** | `property-detail.html` | Deep-dive specs page accepting dynamic URL query (`?id=...`), high-resolution photo gallery with thumbnail switcher, 2D floor blueprint schematic illustration, neighborhood transit distance radar (Metro, Airport, Hospital, School, Mall), certified relationship manager card with direct WhatsApp/Call triggers, and embedded site visit booking form. |
 | **4** | **EMI & Finance** | `calculator.html` | 3-in-1 Financial Hub: (1) Interactive Mortgage EMI Calculator with sliders & amortization breakdown; (2) State Stamp Duty & Registration Estimator (Maharashtra, Karnataka, Delhi, Telangana, Goa, West Bengal); (3) Gross Rental Yield & Capital Payback Calculator; plus a live Q4 2026 Bank Interest Rates Comparison Table (SBI, HDFC, ICICI, Axis, BoB) and Financial FAQ accordion. |
@@ -160,6 +162,8 @@ $$\text{Rental Yield (\%)} = \left( \frac{\text{Monthly Rent} \times 12}{\text{T
 | **TC-04** | Input invalid phone "12345" in booking form | Validation blocks submission & highlights input | Displays inline error message | **PASS** |
 | **TC-05** | Select yesterday's date in visit date picker | Native calendar disables past dates | Past dates disabled via `min` attribute | **PASS** |
 | **TC-06** | Test screen resize to 375px (Mobile viewport) | Layout shifts to 1 column; hamburger activates | Menu toggles cleanly without layout shift | **PASS** |
+| **TC-07** | Submit customer review with 5-star rating | Prepends review to grid; persists in LocalStorage | Immediately visible; survives page refresh | **PASS** |
+| **TC-08** | Click Dark Mode theme toggle (🌙) | Sets `data-theme="dark"`; inverts palette | Deep slate backgrounds; zero white flicker | **PASS** |
 
 ---
 
@@ -167,21 +171,21 @@ $$\text{Rental Yield (\%)} = \left( \frac{\text{Monthly Rent} \times 12}{\text{T
 
 ### 7.1 Questions for Anmol (Dev 1 - Data & State)
 1. **Q: Why did you implement debouncing on the search input?**  
-   *A:* In JavaScript, keyboard input events fire on every character stroke. Without debouncing, searching through data on every keydown wastes CPU cycles. Debouncing delays execution until the user pauses typing for 180ms, improving responsiveness.
+   *A:* In JavaScript, keyboard input events fire on every character stroke. Without debouncing, searching through all 64 property objects on every keydown wastes CPU cycles. Debouncing delays execution until the user pauses typing for 180ms, improving responsiveness.
 2. **Q: How does LocalStorage compare to SessionStorage and Cookies?**  
    *A:* LocalStorage persists data indefinitely until explicitly cleared, providing up to 5MB of storage without being transmitted over HTTP headers (unlike Cookies, which are limited to 4KB and sent with every network request). SessionStorage expires as soon as the tab closes.
 
 ### 7.2 Questions for Mukesh (Dev 2 - UI/UX & Layout)
 1. **Q: What is the benefit of using CSS Custom Properties (`:root`) over hardcoded hex values?**  
-   *A:* CSS variables allow centralized design token management. By changing `--primary-color` in one place, the entire color palette updates across navigation, cards, badges, and buttons instantly.
-2. **Q: Explain how your property cards wrap automatically without media queries.**  
-   *A:* We used CSS Grid with `repeat(auto-fill, minmax(350px, 1fr))`. The browser calculates available width and packs as many 350px columns as fit, expanding each card proportionally to fill remaining space.
+   *A:* CSS variables allow centralized design token management. By changing `--primary-color` in one place or overriding them under `[data-theme="dark"]`, the entire color palette updates across navigation, cards, badges, and buttons instantly.
+2. **Q: How does your Dark Mode prevent the white screen flash (FOUC) on page reload?**  
+   *A:* We execute a synchronous inline `<script>` in the `<head>` of each HTML document before the DOM renders. It reads `dreamnest_user_theme_pref` from `localStorage` and sets `data-theme="dark"` on `document.documentElement` before the body is painted.
 
 ### 7.3 Questions for Kunal (Dev 3 - Interactive Tools)
 1. **Q: How did you implement client-side input validation on the booking form?**  
    *A:* We intercepted form submission using `event.preventDefault()`, parsed the values, and tested them against regular expressions (`^[6-9]\d{9}$` for 10-digit Indian phone numbers and email patterns). We also dynamically bound today's date to `dateInput.min` to eliminate past dates.
-2. **Q: How does your toast notification system operate?**  
-   *A:* When triggered, JavaScript dynamically creates a DOM element with slide-in CSS keyframe animations, appends it to a fixed container, and schedules automatic dismissal using `setTimeout` after 3.5 seconds.
+2. **Q: How does the customer review engine persist and render new reviews?**  
+   *A:* When a homebuyer submits a review, JavaScript validates the text length, extracts initials for a circular avatar, generates the star rating display, prepends the DOM card to the reviews grid, and serializes the array into `localStorage` (`dreamnest_user_reviews`) so it re-renders automatically on subsequent visits.
 
 ---
 
