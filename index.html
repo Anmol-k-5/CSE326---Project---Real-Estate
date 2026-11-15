@@ -254,17 +254,74 @@
         </section>
 
         <!-- ==================================================================
-             SECTION 6: CLIENT TESTIMONIALS
+             SECTION 6: CLIENT TESTIMONIALS & INTERACTIVE REVIEWS
              ================================================================== -->
         <section class="site-container" style="margin-bottom: 60px;">
-            <div class="section-header">
-                <span class="section-tag">Verified Experiences</span>
-                <h2 class="section-title">What Homeowners Say About DreamNest</h2>
-                <p class="section-subtitle">Genuine reviews from families who found their verified residences through our platform.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
+                <div class="section-header" style="margin-bottom: 0; text-align: left;">
+                    <span class="section-tag">Verified Experiences</span>
+                    <h2 class="section-title" style="margin-bottom: 4px;">What Homeowners Say About DreamNest</h2>
+                    <p class="section-subtitle" style="margin-bottom: 0;">Genuine reviews from families who found their verified residences through our platform.</p>
+                </div>
+                <button type="button" class="btn btn--primary btn--md" id="openReviewFormBtn">
+                    ✍️ Write a Review
+                </button>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-                <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
+            <!-- Interactive Review Submission Box (Collapsible) -->
+            <div id="newReviewCard" style="display: none; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 32px; box-shadow: var(--shadow-md);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <div>
+                        <span class="section-tag">Community Feedback</span>
+                        <h3 style="font-size: 19px; font-weight: 700; color: #0f172a; margin: 4px 0 0 0;">Share Your DreamNest Experience</h3>
+                    </div>
+                    <button type="button" id="closeReviewFormBtn" style="background: none; border: none; font-size: 22px; color: #64748b; cursor: pointer;" aria-label="Close review form">✕</button>
+                </div>
+
+                <form id="submitReviewForm" class="booking-form">
+                    <div style="margin-bottom: 8px;">
+                        <label style="font-size: 13px; font-weight: 600; color: #334155; display: block; margin-bottom: 6px;">Your Overall Rating *</label>
+                        <div id="starRatingPicker" style="display: flex; gap: 6px; font-size: 26px; cursor: pointer; user-select: none;">
+                            <span data-star="1" class="star-rating-item" style="color: #f59e0b; transition: transform 0.15s ease;">★</span>
+                            <span data-star="2" class="star-rating-item" style="color: #f59e0b; transition: transform 0.15s ease;">★</span>
+                            <span data-star="3" class="star-rating-item" style="color: #f59e0b; transition: transform 0.15s ease;">★</span>
+                            <span data-star="4" class="star-rating-item" style="color: #f59e0b; transition: transform 0.15s ease;">★</span>
+                            <span data-star="5" class="star-rating-item" style="color: #f59e0b; transition: transform 0.15s ease;">★</span>
+                        </div>
+                        <input type="hidden" id="reviewRatingInput" value="5" />
+                    </div>
+
+                    <div class="booking-form-grid">
+                        <div class="booking-input-group">
+                            <label for="reviewAuthorName">Full Name *</label>
+                            <input type="text" id="reviewAuthorName" placeholder="e.g. Vikramaditya Sen" required />
+                        </div>
+                        <div class="booking-input-group">
+                            <label for="reviewAuthorCity">Locality & City *</label>
+                            <input type="text" id="reviewAuthorCity" placeholder="e.g. Bandra West, Mumbai" required />
+                        </div>
+                    </div>
+
+                    <div class="booking-input-group">
+                        <label for="reviewFeedbackText">Your Detailed Feedback & Experience *</label>
+                        <textarea id="reviewFeedbackText" rows="3" placeholder="Tell other homebuyers about your experience with carpet area verification, site visits, or home loan approvals..." required style="padding: 10px 14px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 14px; outline: none; font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; margin-top: 10px;">
+                        <button type="submit" class="btn btn--primary btn--md">
+                            Publish My Review
+                        </button>
+                        <button type="button" class="btn btn--outline btn--md" id="cancelReviewBtn">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Customer Reviews Grid -->
+            <div id="customerReviewsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+                <!-- Initial Verified Reviews -->
+                <div class="review-card" style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
                     <div style="color: #f59e0b; font-size: 16px; margin-bottom: 12px;">★★★★★</div>
                     <p style="font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 18px;">
                         "The carpet area verification gave us total peace of mind. We booked a 3 BHK at Skyline Heights Worli, and the loan was sanctioned in 4 days through their banking partner!"
@@ -278,7 +335,7 @@
                     </div>
                 </div>
 
-                <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
+                <div class="review-card" style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
                     <div style="color: #f59e0b; font-size: 16px; margin-bottom: 12px;">★★★★★</div>
                     <p style="font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 18px;">
                         "The interactive mortgage calculator and stamp duty estimator helped us budget accurately before scheduling our site visit to Whitefield. Zero broker harassment."
@@ -292,7 +349,7 @@
                     </div>
                 </div>
 
-                <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
+                <div class="review-card" style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
                     <div style="color: #f59e0b; font-size: 16px; margin-bottom: 12px;">★★★★★</div>
                     <p style="font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 18px;">
                         "Saved 3 properties to my wishlist, compared their specs side-by-side on the website, and locked in our Assagao villa without any middleman commission. 10/10 platform!"
@@ -436,6 +493,195 @@
                     favBadge.textContent = count;
                     favBadge.style.display = count > 0 ? 'inline-block' : 'none';
                 }
+            }
+
+            // -----------------------------------------------------------------
+            // Interactive Customer Reviews Submission Engine
+            // -----------------------------------------------------------------
+            var openReviewBtn = document.getElementById('openReviewFormBtn');
+            var closeReviewBtn = document.getElementById('closeReviewFormBtn');
+            var cancelReviewBtn = document.getElementById('cancelReviewBtn');
+            var reviewCard = document.getElementById('newReviewCard');
+            var reviewForm = document.getElementById('submitReviewForm');
+            var reviewsGrid = document.getElementById('customerReviewsGrid');
+            var starPicker = document.getElementById('starRatingPicker');
+            var ratingInput = document.getElementById('reviewRatingInput');
+
+            function toggleReviewBox(show) {
+                if (reviewCard) {
+                    reviewCard.style.display = show ? 'block' : 'none';
+                    if (show) reviewCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }
+
+            if (openReviewBtn) {
+                openReviewBtn.addEventListener('click', function () {
+                    toggleReviewBox(true);
+                });
+            }
+            if (closeReviewBtn) {
+                closeReviewBtn.addEventListener('click', function () {
+                    toggleReviewBox(false);
+                });
+            }
+            if (cancelReviewBtn) {
+                cancelReviewBtn.addEventListener('click', function () {
+                    toggleReviewBox(false);
+                });
+            }
+
+            // Interactive Star Rating Picker
+            if (starPicker) {
+                var stars = starPicker.querySelectorAll('.star-rating-item');
+                function setRating(val) {
+                    if (ratingInput) ratingInput.value = val;
+                    stars.forEach(function (s) {
+                        var starIdx = parseInt(s.getAttribute('data-star'), 10);
+                        if (starIdx <= val) {
+                            s.style.color = '#f59e0b';
+                        } else {
+                            s.style.color = '#cbd5e1';
+                        }
+                    });
+                }
+                stars.forEach(function (star) {
+                    star.addEventListener('click', function () {
+                        var val = parseInt(star.getAttribute('data-star'), 10);
+                        setRating(val);
+                    });
+                    star.addEventListener('mouseenter', function () {
+                        var val = parseInt(star.getAttribute('data-star'), 10);
+                        stars.forEach(function (s) {
+                            var sIdx = parseInt(s.getAttribute('data-star'), 10);
+                            s.style.color = sIdx <= val ? '#f59e0b' : '#cbd5e1';
+                        });
+                    });
+                });
+                starPicker.addEventListener('mouseleave', function () {
+                    var current = parseInt(ratingInput ? ratingInput.value : 5, 10);
+                    setRating(current);
+                });
+            }
+
+            // Load persisted user reviews from LocalStorage
+            var palette = [
+                { bg: '#dbeafe', color: '#1e40af' },
+                { bg: '#dcfce7', color: '#166534' },
+                { bg: '#fef3c7', color: '#92400e' },
+                { bg: '#fae8ff', color: '#86198f' },
+                { bg: '#ffedd5', color: '#9a3412' }
+            ];
+
+            function createReviewElement(review) {
+                var card = document.createElement('div');
+                card.className = 'review-card';
+                card.style.cssText = 'background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm); position: relative;';
+                
+                var starsStr = '';
+                for (var i = 0; i < (review.rating || 5); i++) starsStr += '★';
+                for (var j = (review.rating || 5); j < 5; j++) starsStr += '☆';
+
+                var initials = (review.name || 'User')
+                    .split(' ')
+                    .map(function (n) { return n[0]; })
+                    .slice(0, 2)
+                    .join('')
+                    .toUpperCase();
+
+                var pal = palette[Math.abs(initials.charCodeAt(0) || 0) % palette.length];
+
+                card.innerHTML = 
+                    '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">' +
+                        '<div style="color: #f59e0b; font-size: 16px;">' + starsStr + '</div>' +
+                        '<span class="badge badge--featured" style="font-size: 11px; padding: 2px 8px;">Verified Buyer</span>' +
+                    '</div>' +
+                    '<p style="font-size: 14px; color: #475569; line-height: 1.6; margin-bottom: 18px;">"' +
+                        review.feedback +
+                    '"</p>' +
+                    '<div style="display: flex; gap: 12px; align-items: center;">' +
+                        '<div style="width: 40px; height: 40px; background-color: ' + pal.bg + '; color: ' + pal.color + '; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">' + initials + '</div>' +
+                        '<div>' +
+                            '<strong style="font-size: 14px; color: #0f172a; display: block;">' + review.name + '</strong>' +
+                            '<span style="font-size: 12px; color: #64748b;">' + review.city + '</span>' +
+                        '</div>' +
+                    '</div>';
+                return card;
+            }
+
+            function loadStoredReviews() {
+                try {
+                    var stored = localStorage.getItem('dreamnest_user_reviews');
+                    if (stored && reviewsGrid) {
+                        var reviews = JSON.parse(stored);
+                        if (Array.isArray(reviews)) {
+                            reviews.forEach(function (rev) {
+                                reviewsGrid.insertBefore(createReviewElement(rev), reviewsGrid.firstChild);
+                            });
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Failed to load reviews:', e);
+                }
+            }
+            loadStoredReviews();
+
+            // Submit Review Handler
+            if (reviewForm) {
+                reviewForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var nameInput = document.getElementById('reviewAuthorName');
+                    var cityInput = document.getElementById('reviewAuthorCity');
+                    var feedbackInput = document.getElementById('reviewFeedbackText');
+                    var rating = parseInt(ratingInput ? ratingInput.value : 5, 10);
+
+                    var name = nameInput ? nameInput.value.trim() : '';
+                    var city = cityInput ? cityInput.value.trim() : '';
+                    var feedback = feedbackInput ? feedbackInput.value.trim() : '';
+
+                    if (!name || name.length < 2) {
+                        if (window.UIUtils) window.UIUtils.showToast('Please enter your full name', 'error');
+                        return;
+                    }
+                    if (!feedback || feedback.length < 10) {
+                        if (window.UIUtils) window.UIUtils.showToast('Review must be at least 10 characters long', 'error');
+                        return;
+                    }
+
+                    var newReview = {
+                        name: name,
+                        city: city || 'Verified Buyer',
+                        feedback: feedback,
+                        rating: rating,
+                        date: new Date().toISOString()
+                    };
+
+                    // Persist to LocalStorage
+                    try {
+                        var stored = localStorage.getItem('dreamnest_user_reviews');
+                        var list = stored ? JSON.parse(stored) : [];
+                        list.unshift(newReview);
+                        localStorage.setItem('dreamnest_user_reviews', JSON.stringify(list));
+                    } catch (err) {
+                        console.error('Storage error:', err);
+                    }
+
+                    // Prepend card to grid
+                    if (reviewsGrid) {
+                        reviewsGrid.insertBefore(createReviewElement(newReview), reviewsGrid.firstChild);
+                    }
+
+                    // Reset & Close form
+                    reviewForm.reset();
+                    if (ratingInput) ratingInput.value = 5;
+                    if (starPicker) {
+                        starPicker.querySelectorAll('.star-rating-item').forEach(function (s) { s.style.color = '#f59e0b'; });
+                    }
+                    toggleReviewBox(false);
+
+                    if (window.UIUtils && typeof window.UIUtils.showToast === 'function') {
+                        window.UIUtils.showToast('Thank you ' + name + '! Your review has been published.', 'success');
+                    }
+                });
             }
         });
     </script>
