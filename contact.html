@@ -32,11 +32,17 @@
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="properties.html" class="nav-link">All Properties</a></li>
+                    <li><a href="calculator.html" class="nav-link">EMI & Finance</a></li>
+                    <li><a href="saved.html" class="nav-link">Wishlist & Compare</a></li>
                     <li><a href="contact.html" class="nav-link is-active">Book a Visit</a></li>
                     <li><a href="about.html" class="nav-link">About & Team</a></li>
                 </ul>
 
                 <div class="nav-actions">
+                    <a href="saved.html" class="header-badge-btn" title="View your saved wishlist">
+                        <span>❤️ Saved</span>
+                        <span class="counter-badge" id="favoritesCountBadge" style="display: none;">0</span>
+                    </a>
                     <button type="button" class="mobile-menu-toggle" id="mobileMenuToggleBtn" aria-label="Toggle navigation menu">
                         <span></span>
                         <span></span>
@@ -252,6 +258,8 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="properties.html">All Properties</a></li>
+                        <li><a href="calculator.html">EMI & Financial Tools</a></li>
+                        <li><a href="saved.html">Wishlist & Compare</a></li>
                         <li><a href="contact.html">Book a Visit</a></li>
                         <li><a href="about.html">About & Team</a></li>
                     </ul>
@@ -281,6 +289,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/storage-state.js"></script>
     <script src="js/modal-contact.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -290,6 +299,16 @@
                 toggleBtn.addEventListener('click', function () {
                     navLinks.classList.toggle('is-open');
                 });
+            }
+
+            // Sync favorites badge
+            if (window.StorageState) {
+                var badge = document.getElementById('favoritesCountBadge');
+                if (badge) {
+                    var count = window.StorageState.getFavorites().length;
+                    badge.textContent = count;
+                    badge.style.display = count > 0 ? 'inline-block' : 'none';
+                }
             }
         });
     </script>

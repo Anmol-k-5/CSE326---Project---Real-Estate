@@ -51,6 +51,12 @@
         grid-template-columns: 1fr 1fr;
         gap: 30px;
     }
+
+    /* Detail Page Tablet */
+    .detail-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -230,6 +236,36 @@
     /* Features Section */
     .features-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Detail Page & Blueprints Mobile */
+    .detail-gallery-main {
+        height: 300px;
+    }
+
+    .detail-specs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blueprint-layout-canvas {
+        grid-template-columns: 1fr;
+    }
+
+    .blueprint-room--master {
+        grid-column: span 1;
+    }
+
+    .calc-nav-tabs {
+        flex-direction: column;
+    }
+
+    .saved-tabs-bar {
+        overflow-x: auto;
+    }
+
+    .rm-profile-card {
+        flex-direction: column;
+        text-align: center;
     }
 
     /* Team Section */

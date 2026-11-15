@@ -40,26 +40,32 @@
 
 ---
 
-## 📂 File & Directory Architecture
+## 📂 Multi-Page File & Directory Architecture
 
 ```text
 CSE326---Project---Real-Estate/
 │
-├── index.html                  <-- Mukesh: Main application page
-├── README.md                   <-- Team: Project documentation & viva guide
+├── index.html                  <-- Home: Hero spotlight, city discovery, testimonials
+├── properties.html             <-- Catalog: Live search, multi-filter pipeline, sort
+├── property-detail.html        <-- Deep Dive: High-res gallery, 2D blueprint, transit radar
+├── calculator.html             <-- Financial Hub: EMI calculator, stamp duty, rental yield, bank rates
+├── saved.html                  <-- Saved Hub: LocalStorage wishlist & side-by-side comparison matrix
+├── contact.html                <-- Scheduling: Private tour booking with validation, office hubs
+├── about.html                  <-- Project Team: Academic workload breakdown & architecture
+├── README.md                   <-- Team: Project documentation & viva defense guide
 ├── .gitignore                  <-- Clean repo hygiene
 │
 ├── css/
-│   ├── main.css                <-- Mukesh: Design system, layout, cards, navbar
-│   ├── responsive.css          <-- Mukesh: Breakpoints for mobile, tablet, and print
-│   └── components.css          <-- Kunal: Modal, mortgage calculator, toast styles
+│   ├── main.css                <-- Mukesh: Design system tokens, layout, cards, navbar
+│   ├── responsive.css          <-- Mukesh: Breakpoints for desktop, tablet, mobile, and print
+│   └── components.css          <-- Kunal: Modal, 3-in-1 calculator, toast, compare matrix styles
 │
 └── js/
-    ├── properties-data.js      <-- Anmol: 12 verified real estate listings dataset
+    ├── properties-data.js      <-- Anmol: 12 verified real estate listings dataset & query API
     ├── storage-state.js        <-- Anmol: LocalStorage persistence & Pub/Sub event bus
-    ├── search-filter.js        <-- Anmol: Live search, filter pipeline, sorting
-    ├── calculator.js           <-- Kunal: Mortgage EMI calculation engine
-    └── modal-contact.js        <-- Kunal: Quick-view modal, gallery, form validation
+    ├── search-filter.js        <-- Anmol: Live search, filter pipeline, sorting, active chips
+    ├── calculator.js           <-- Kunal: Mortgage EMI & financial calculation engine
+    └── modal-contact.js        <-- Kunal: Quick-view modal, gallery switcher, form validation
 ```
 
 ---

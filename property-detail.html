@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details - DreamNest Verified Real Estate</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets: Mukesh's Design System & Kunal's Components -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         UNIVERSAL NAVIGATION BAR (6-Page Shared Navigation by Mukesh)
+         ====================================================================== -->
+    <header class="site-header">
+        <div class="site-container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="index.html" class="brand-logo" aria-label="DreamNest Home">
+                    <span class="brand-logo__icon">🏰</span>
+                    <div>
+                        <span>DreamNest</span>
+                        <span class="brand-logo__sub">Verified Properties</span>
+                    </div>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="properties.html" class="nav-link">All Properties</a></li>
+                    <li><a href="calculator.html" class="nav-link">EMI & Finance</a></li>
+                    <li><a href="saved.html" class="nav-link">Wishlist & Compare</a></li>
+                    <li><a href="contact.html" class="nav-link">Book a Visit</a></li>
+                    <li><a href="about.html" class="nav-link">About & Team</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="saved.html" class="header-badge-btn" title="View your saved wishlist">
+                        <span>❤️ Saved</span>
+                        <span class="counter-badge" id="favoritesCountBadge" style="display: none;">0</span>
+                    </a>
+                    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggleBtn" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumb Bar -->
+        <nav aria-label="Breadcrumb" style="background-color: #f1f5f9; padding: 12px 0; border-bottom: 1px solid var(--border-color);">
+            <div class="site-container">
+                <p style="font-size: 13px; color: #64748b; margin: 0;">
+                    <a href="index.html" style="color: #2563eb; text-decoration: none;">Home</a> &rsaquo;
+                    <a href="properties.html" style="color: #2563eb; text-decoration: none;">Properties</a> &rsaquo;
+                    <span id="breadcrumbPropertyTitle" style="color: #0f172a; font-weight: 600;">Property Overview</span>
+                </p>
+            </div>
+        </nav>
+
+        <!-- Dynamic Main Content Section -->
+        <section class="site-container" style="margin-top: 32px; margin-bottom: 60px;">
+            <div id="propertyDetailContainer">
+                <!-- Rendered dynamically by JavaScript -->
+                <div style="text-align: center; padding: 60px 20px;">
+                    <p style="font-size: 16px; color: #64748b;">Loading verified property specifications...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Similar / Recommended Properties Row -->
+        <section style="background-color: #ffffff; padding: 48px 0; border-top: 1px solid var(--border-color);">
+            <div class="site-container">
+                <div class="section-header" style="margin-bottom: 32px;">
+                    <span class="section-tag">Explore More</span>
+                    <h2 class="section-title">Similar Verified Residences</h2>
+                    <p class="section-subtitle">Curated premium homes matching similar locality and luxury specifications.</p>
+                </div>
+                <div class="properties-grid" id="similarPropertiesGrid">
+                    <!-- Injected dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scroll-To-Top Button -->
+    <button type="button" class="scroll-to-top-btn" id="scrollToTopBtn" aria-label="Scroll to top" title="Scroll to top">↑</button>
+
+    <!-- Universal Site Footer -->
+    <footer class="site-footer">
+        <div class="site-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🏰 DreamNest Realty</h3>
+                    <p>India's premier transparent real estate discovery platform. Connecting discerning homebuyers with verified builders and authentic resale properties.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">All Properties</a></li>
+                        <li><a href="calculator.html">EMI & Financial Tools</a></li>
+                        <li><a href="saved.html">Wishlist & Compare</a></li>
+                        <li><a href="contact.html">Book a Visit</a></li>
+                        <li><a href="about.html">About & Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Direct Contact</h4>
+                    <ul class="footer-links">
+                        <li>📍 Brigade Plaza, MG Road, Bengaluru</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ contact@dreamnest.example</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Academic Submission</h4>
+                    <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
+                        CSE326 Web Development Project<br>
+                        3-Member Team Collaboration (Anmol, Mukesh, Kunal)
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 DreamNest Real Estate Project • All Rights Reserved.</p>
+                <p>Semantic HTML5 &bull; Modular CSS3 &bull; Vanilla JavaScript ES6+</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts: Anmol's Data & State, Kunal's Components -->
+    <script src="js/properties-data.js"></script>
+    <script src="js/storage-state.js"></script>
+    <script src="js/modal-contact.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Mobile Menu Drawer
+            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
+            var navLinks = document.querySelector('.nav-links');
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function () {
+                    navLinks.classList.toggle('is-open');
+                });
+            }
+
+            // 2. Sync Saved Wishlist Counter Badge
+            function updateFavBadge() {
+                if (window.StorageState) {
+                    var favBadge = document.getElementById('favoritesCountBadge');
+                    if (favBadge) {
+                        var count = window.StorageState.getFavorites().length;
+                        favBadge.textContent = count;
+                        favBadge.style.display = count > 0 ? 'inline-block' : 'none';
+                    }
+                }
+            }
+            updateFavBadge();
+
+            // 3. Read Query Parameter (?id=...)
+            var urlParams = new URLSearchParams(window.location.search);
+            var propId = parseInt(urlParams.get('id'), 10) || 101;
+
+            if (!window.RealEstateData) {
+                console.error('RealEstateData module not loaded.');
+                return;
+            }
+
+            var prop = window.RealEstateData.getPropertyById(propId);
+            if (!prop) {
+                // Fallback to first available property if invalid ID
+                var allProps = window.RealEstateData.getAllProperties();
+                prop = allProps.length > 0 ? allProps[0] : null;
+            }
+
+            var container = document.getElementById('propertyDetailContainer');
+            if (!prop || !container) {
+                if (container) {
+                    container.innerHTML = '<div class="empty-state-box">' +
+                        '<div class="empty-state-box__icon">⚠️</div>' +
+                        '<h3>Property Listing Not Found</h3>' +
+                        '<p>The property ID specified could not be located in our verified database.</p>' +
+                        '<a href="properties.html" class="btn btn--primary btn--md">Return to Catalog</a>' +
+                    '</div>';
+                }
+                return;
+            }
+
+            // Record this property as Recently Viewed
+            if (window.StorageState && typeof window.StorageState.recordPropertyView === 'function') {
+                window.StorageState.recordPropertyView(prop.id);
+            }
+
+            // Set Breadcrumb Title
+            var breadcrumbTitle = document.getElementById('breadcrumbPropertyTitle');
+            if (breadcrumbTitle) {
+                breadcrumbTitle.textContent = prop.title;
+            }
+            document.title = prop.title + " - DreamNest Verified Real Estate";
+
+            // Check Saved & Compare Status
+            var isSaved = window.StorageState ? window.StorageState.isFavorite(prop.id) : false;
+            var inCompare = window.StorageState ? window.StorageState.isInCompare(prop.id) : false;
+
+            // Compute Estimated EMI (80% LTV, 8.5% p.a., 20 years)
+            var principal = prop.price * 0.8;
+            var monthlyRate = (8.5 / 12) / 100;
+            var totalMonths = 20 * 12;
+            var emi = Math.round((principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1));
+            var formattedEmi = '₹' + emi.toLocaleString('en-IN');
+            var pricePerSqFt = '₹' + Math.round(prop.price / prop.areaSqFt).toLocaleString('en-IN') + ' / sq.ft';
+
+            // Build Gallery Thumbnails HTML
+            var galleryImages = [prop.mainImage];
+            if (Array.isArray(prop.gallery)) {
+                prop.gallery.forEach(function (imgUrl) {
+                    if (galleryImages.indexOf(imgUrl) === -1) {
+                        galleryImages.push(imgUrl);
+                    }
+                });
+            }
+            var thumbsHtml = galleryImages.map(function (img, idx) {
+                return '<div class="detail-thumb-item ' + (idx === 0 ? 'is-active' : '') + '" data-img-src="' + img + '">' +
+                    '<img src="' + img + '" alt="Thumbnail ' + (idx + 1) + '" />' +
+                '</div>';
+            }).join('');
+
+            // Build Amenities HTML
+            var amenitiesHtml = prop.amenities.map(function (amenity) {
+                return '<div class="amenity-item" style="display: flex; align-items: center; gap: 8px;">' +
+                    '<span style="color: #10b981; font-weight: bold;">✓</span> ' +
+                    '<span>' + amenity + '</span>' +
+                '</div>';
+            }).join('');
+
+            // Render Full Detail Page Layout
+            container.innerHTML = 
+                '<div class="detail-hero-grid">' +
+                    '<!-- Left: Interactive High-Res Gallery -->' +
+                    '<div>' +
+                        '<div class="detail-gallery-main" id="mainGalleryViewer">' +
+                            '<img id="mainGalleryImg" src="' + prop.mainImage + '" alt="' + prop.title + '" />' +
+                            '<span class="badge badge--featured" style="position: absolute; top: 16px; left: 16px; font-size: 13px; padding: 6px 14px;">Verified Listing</span>' +
+                        '</div>' +
+                        '<div class="detail-gallery-thumbs" id="galleryThumbnailsStrip">' +
+                            thumbsHtml +
+                        '</div>' +
+
+                        '<!-- Description Box -->' +
+                        '<div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 28px; margin-top: 24px; box-shadow: var(--shadow-sm);">' +
+                            '<h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Architectural Overview</h3>' +
+                            '<p style="font-size: 15px; color: #475569; line-height: 1.7; margin: 0 0 16px 0;">' + prop.description + '</p>' +
+                            '<p style="font-size: 13px; color: #64748b; margin: 0;"><strong>Verified Address:</strong> ' + prop.address + '</p>' +
+                        '</div>' +
+
+                        '<!-- 2D Floor Plan Blueprint Illustration -->' +
+                        '<div class="blueprint-card">' +
+                            '<div style="display: flex; justify-content: space-between; align-items: center;">' +
+                                '<div>' +
+                                    '<span style="font-size: 11px; text-transform: uppercase; color: #38bdf8; letter-spacing: 1px; font-weight: 700;">Architectural Layout</span>' +
+                                    '<h3 style="font-size: 19px; font-weight: 700; color: #ffffff; margin: 4px 0 0 0;">2D Floor Blueprint Schematic</h3>' +
+                                '</div>' +
+                                '<span style="font-size: 13px; color: #94a3b8; font-family: monospace;">' + prop.areaSqFt + ' sq.ft Carpet Area</span>' +
+                            '</div>' +
+                            '<div class="blueprint-layout-canvas">' +
+                                '<div class="blueprint-room blueprint-room--master">' +
+                                    '<div class="blueprint-room__name">Master Bedroom Suite</div>' +
+                                    '<div class="blueprint-room__dims">18\' x 14\' • En-suite Bath</div>' +
+                                '</div>' +
+                                '<div class="blueprint-room">' +
+                                    '<div class="blueprint-room__name">Bedroom 2</div>' +
+                                    '<div class="blueprint-room__dims">14\' x 12\'</div>' +
+                                '</div>' +
+                                '<div class="blueprint-room">' +
+                                    '<div class="blueprint-room__name">Modular Kitchen</div>' +
+                                    '<div class="blueprint-room__dims">12\' x 10\' • Utility</div>' +
+                                '</div>' +
+                                '<div class="blueprint-room">' +
+                                    '<div class="blueprint-room__name">Living & Dining Hall</div>' +
+                                    '<div class="blueprint-room__dims">22\' x 16\'</div>' +
+                                '</div>' +
+                                '<div class="blueprint-room">' +
+                                    '<div class="blueprint-room__name">Private Balcony Deck</div>' +
+                                    '<div class="blueprint-room__dims">14\' x 6\' • Open Deck</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+
+                        '<!-- Neighborhood Distance Radar -->' +
+                        '<div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 28px; margin-top: 24px; box-shadow: var(--shadow-sm);">' +
+                            '<span class="section-tag">Transit & Locality</span>' +
+                            '<h3 style="font-size: 20px; font-weight: 700; color: #0f172a; margin-top: 4px; margin-bottom: 8px;">Neighborhood Distance Radar</h3>' +
+                            '<p style="font-size: 14px; color: #64748b; margin: 0 0 16px 0;">Calculated driving distances from ' + prop.neighborhood + ', ' + prop.city + ':</p>' +
+                            '<div class="radar-grid">' +
+                                '<div class="radar-card">' +
+                                    '<div class="radar-icon">🚇</div>' +
+                                    '<div class="radar-info">' +
+                                        '<h5>Metro Station</h5>' +
+                                        '<p>450m • 5 mins walk</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="radar-card">' +
+                                    '<div class="radar-icon">✈️</div>' +
+                                    '<div class="radar-info">' +
+                                        '<h5>International Airport</h5>' +
+                                        '<p>16.8 km • 35 mins drive</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="radar-card">' +
+                                    '<div class="radar-icon">🏥</div>' +
+                                    '<div class="radar-info">' +
+                                        '<h5>Multispecialty Hospital</h5>' +
+                                        '<p>1.2 km • 6 mins drive</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="radar-card">' +
+                                    '<div class="radar-icon">🏫</div>' +
+                                    '<div class="radar-info">' +
+                                        '<h5>International School</h5>' +
+                                        '<p>850m • 10 mins walk</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="radar-card">' +
+                                    '<div class="radar-icon">🛍️</div>' +
+                                    '<div class="radar-info">' +
+                                        '<h5>Shopping Mall & Supermarket</h5>' +
+                                        '<p>600m • 7 mins walk</p>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<!-- Right: Sticky Property Snapshot & Site Visit Booking -->' +
+                    '<div>' +
+                        '<div class="detail-snapshot-card">' +
+                            '<div class="detail-price-box">' +
+                                '<div style="display: flex; justify-content: space-between; align-items: flex-start;">' +
+                                    '<div>' +
+                                        '<span style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: #2563eb; letter-spacing: 0.5px;">For ' + prop.purpose + '</span>' +
+                                        '<div class="detail-price-val">' + prop.formattedPrice + '</div>' +
+                                        '<div class="detail-price-per-sqft">Rate: ' + pricePerSqFt + '</div>' +
+                                    '</div>' +
+                                    '<button type="button" class="property-card__fav-btn ' + (isSaved ? 'is-active' : '') + '" id="detailFavBtn" title="Bookmark Property" style="position: static; width: 44px; height: 44px;">' +
+                                        '<svg viewBox="0 0 24 24" class="heart-icon"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>' +
+                                    '</button>' +
+                                '</div>' +
+                                '<div style="margin-top: 14px; padding: 12px; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">' +
+                                    '<div>' +
+                                        '<div style="font-size: 12px; color: #1e40af;">Estimated EMI from</div>' +
+                                        '<div style="font-size: 16px; font-weight: 800; color: #1e3a8a;">' + formattedEmi + ' /mo</div>' +
+                                    '</div>' +
+                                    '<a href="calculator.html?price=' + prop.price + '&title=' + encodeURIComponent(prop.title) + '" class="btn btn--outline btn--sm" style="background: #ffffff;">Calculate</a>' +
+                                '</div>' +
+                            '</div>' +
+
+                            '<!-- Key Specifications Grid -->' +
+                            '<h4 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Property Key Specifications</h4>' +
+                            '<div class="detail-specs-grid">' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">Bedrooms (BHK)</span><span class="detail-spec-box__val">' + prop.bedrooms + ' BHK</span></div>' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">Bathrooms</span><span class="detail-spec-box__val">' + prop.bathrooms + ' Bath</span></div>' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">Carpet Area</span><span class="detail-spec-box__val">' + prop.areaSqFt + ' sq.ft</span></div>' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">Furnishing Status</span><span class="detail-spec-box__val">' + prop.furnishing + '</span></div>' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">Facing Direction</span><span class="detail-spec-box__val">' + prop.facing + '</span></div>' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">Floor Level</span><span class="detail-spec-box__val">' + prop.floorNumber + ' of ' + prop.totalFloors + '</span></div>' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">Reserved Parking</span><span class="detail-spec-box__val">' + prop.parkingSpots + ' Slots</span></div>' +
+                                '<div class="detail-spec-box"><span class="detail-spec-box__label">RERA Registration</span><span class="detail-spec-box__val" style="font-size: 12px;">' + prop.reraId + '</span></div>' +
+                            '</div>' +
+
+                            '<!-- Compare Action Button -->' +
+                            '<button type="button" class="btn btn--outline btn--md" id="detailCompareBtn" style="width: 100%; margin-bottom: 20px;">' +
+                                (inCompare ? '✓ In Comparison Queue' : '+ Add to Comparison Queue') +
+                            '</button>' +
+
+                            '<!-- Amenities Checklist -->' +
+                            '<h4 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Verified Amenities</h4>' +
+                            '<div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px;">' +
+                                amenitiesHtml +
+                            '</div>' +
+
+                            '<!-- Embedded Tour Booking Form -->' +
+                            '<div style="border-top: 1px solid #e2e8f0; padding-top: 20px;">' +
+                                '<span class="section-tag">Instant Scheduling</span>' +
+                                '<h4 style="font-size: 17px; font-weight: 700; color: #0f172a; margin: 4px 0 12px 0;">Schedule a Private Site Tour</h4>' +
+                                '<form id="detailTourBookingForm" class="booking-form">' +
+                                    '<input type="hidden" id="detailPropId" value="' + prop.id + '" />' +
+                                    '<div class="booking-input-group">' +
+                                        '<label for="detailName">Your Name *</label>' +
+                                        '<input type="text" id="detailName" placeholder="e.g. Rahul Sharma" required />' +
+                                    '</div>' +
+                                    '<div class="booking-input-group">' +
+                                        '<label for="detailEmail">Email Address *</label>' +
+                                        '<input type="email" id="detailEmail" placeholder="e.g. rahul@example.com" required />' +
+                                    '</div>' +
+                                    '<div class="booking-input-group">' +
+                                        '<label for="detailPhone">Mobile Number (10 digits) *</label>' +
+                                        '<input type="tel" id="detailPhone" placeholder="e.g. 9876543210" required />' +
+                                    '</div>' +
+                                    '<div class="booking-input-group">' +
+                                        '<label for="detailDate">Preferred Date *</label>' +
+                                        '<input type="date" id="detailDate" required />' +
+                                    '</div>' +
+                                    '<button type="submit" class="btn btn--primary btn--md" style="margin-top: 8px;">Confirm Site Visit</button>' +
+                                '</form>' +
+                            '</div>' +
+
+                            '<!-- Dedicated Relationship Manager -->' +
+                            '<div class="rm-profile-card">' +
+                                '<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Relationship Manager" class="rm-avatar" />' +
+                                '<div class="rm-details">' +
+                                    '<h4>Pooja Nair</h4>' +
+                                    '<p>Senior Property Advisor • Certified RERA Agent</p>' +
+                                    '<div style="display: flex; gap: 8px; flex-wrap: wrap;">' +
+                                        '<a href="tel:+919876543210" class="btn btn--outline btn--sm" style="font-size: 12px; padding: 6px 12px;">📞 Call Direct</a>' +
+                                        '<a href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20' + encodeURIComponent(prop.title) + '" target="_blank" class="btn btn--primary btn--sm" style="background-color: #10b981; font-size: 12px; padding: 6px 12px;">💬 WhatsApp</a>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+
+            // Attach Gallery Thumbnail Switcher
+            var thumbItems = document.querySelectorAll('.detail-thumb-item');
+            var mainImg = document.getElementById('mainGalleryImg');
+            thumbItems.forEach(function (thumb) {
+                thumb.addEventListener('click', function () {
+                    thumbItems.forEach(function (t) { t.classList.remove('is-active'); });
+                    thumb.classList.add('is-active');
+                    var targetSrc = thumb.getAttribute('data-img-src');
+                    if (mainImg) {
+                        mainImg.style.opacity = '0.4';
+                        setTimeout(function () {
+                            mainImg.src = targetSrc;
+                            mainImg.style.opacity = '1';
+                        }, 150);
+                    }
+                });
+            });
+
+            // Attach Wishlist Bookmark Handler
+            var favBtn = document.getElementById('detailFavBtn');
+            if (favBtn && window.StorageState) {
+                favBtn.addEventListener('click', function () {
+                    var updated = window.StorageState.toggleFavorite(prop.id);
+                    if (updated.isSaved) {
+                        favBtn.classList.add('is-active');
+                        if (window.UIUtils) window.UIUtils.showToast('Added ' + prop.title + ' to Wishlist!', 'success');
+                    } else {
+                        favBtn.classList.remove('is-active');
+                        if (window.UIUtils) window.UIUtils.showToast('Removed from Wishlist.', 'info');
+                    }
+                    updateFavBadge();
+                });
+            }
+
+            // Attach Compare Queue Handler
+            var compBtn = document.getElementById('detailCompareBtn');
+            if (compBtn && window.StorageState) {
+                compBtn.addEventListener('click', function () {
+                    if (window.StorageState.isInCompare(prop.id)) {
+                        window.StorageState.removeFromCompare(prop.id);
+                        compBtn.textContent = '+ Add to Comparison Queue';
+                        compBtn.classList.remove('btn--primary');
+                        compBtn.classList.add('btn--outline');
+                        if (window.UIUtils) window.UIUtils.showToast('Removed from compare list', 'info');
+                    } else {
+                        var res = window.StorageState.addToCompare(prop.id);
+                        if (res.success) {
+                            compBtn.textContent = '✓ In Comparison Queue';
+                            compBtn.classList.remove('btn--outline');
+                            compBtn.classList.add('btn--primary');
+                            if (window.UIUtils) window.UIUtils.showToast('Added to compare! View in "Wishlist & Compare".', 'success');
+                        } else {
+                            if (window.UIUtils) window.UIUtils.showToast(res.reason, 'warning');
+                        }
+                    }
+                });
+            }
+
+            // Set default date for visit booking (tomorrow)
+            var dateInput = document.getElementById('detailDate');
+            if (dateInput) {
+                var tmrw = new Date();
+                tmrw.setDate(tmrw.getDate() + 1);
+                dateInput.min = tmrw.toISOString().split('T')[0];
+                dateInput.value = tmrw.toISOString().split('T')[0];
+            }
+
+            // Attach Site Visit Form Submission
+            var visitForm = document.getElementById('detailTourBookingForm');
+            if (visitForm) {
+                visitForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var name = document.getElementById('detailName').value.trim();
+                    var email = document.getElementById('detailEmail').value.trim();
+                    var phone = document.getElementById('detailPhone').value.trim();
+                    var date = document.getElementById('detailDate').value;
+
+                    // Validation
+                    if (!name || name.length < 2) {
+                        if (window.UIUtils) window.UIUtils.showToast('Please enter your legal name', 'error');
+                        return;
+                    }
+                    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(email)) {
+                        if (window.UIUtils) window.UIUtils.showToast('Please enter a valid email address', 'error');
+                        return;
+                    }
+                    var phoneClean = phone.replace(/\D/g, '');
+                    if (phoneClean.length !== 10) {
+                        if (window.UIUtils) window.UIUtils.showToast('Mobile number must be exactly 10 digits', 'error');
+                        return;
+                    }
+
+                    var bookingRef = 'DN-' + Math.floor(100000 + Math.random() * 900000);
+                    visitForm.innerHTML = 
+                        '<div class="booking-success-box">' +
+                            '<div class="booking-success-box__icon">🎉</div>' +
+                            '<h3>Site Visit Scheduled!</h3>' +
+                            '<p>Thank you <strong>' + name + '</strong>. Our relationship manager <strong>Pooja Nair</strong> will coordinate your private walkthrough for <strong>' + date + '</strong>.</p>' +
+                            '<div class="booking-success-box__ref">Booking ID: ' + bookingRef + '</div>' +
+                        '</div>';
+                    if (window.UIUtils) window.UIUtils.showToast('Site visit confirmed! ID: ' + bookingRef, 'success');
+                });
+            }
+
+            // Render Similar Properties
+            var similarContainer = document.getElementById('similarPropertiesGrid');
+            if (similarContainer) {
+                var similar = window.RealEstateData.getAllProperties()
+                    .filter(function (p) { return p.id !== prop.id && (p.city === prop.city || p.type === prop.type); })
+                    .slice(0, 3);
+
+                if (similar.length === 0) {
+                    similar = window.RealEstateData.getAllProperties()
+                        .filter(function (p) { return p.id !== prop.id; })
+                        .slice(0, 3);
+                }
+
+                similarContainer.innerHTML = similar.map(function (item) {
+                    return '<article class="property-card" data-id="' + item.id + '">' +
+                        '<div class="property-card__media">' +
+                            '<img src="' + item.mainImage + '" alt="' + item.title + '" class="property-card__img" />' +
+                            '<div class="property-card__price-banner">' + item.formattedPrice + '</div>' +
+                        '</div>' +
+                        '<div class="property-card__content">' +
+                            '<div class="property-card__header-meta">' +
+                                '<span class="property-card__tag">' + item.type + '</span>' +
+                                '<span class="property-card__city">📍 ' + item.city + '</span>' +
+                            '</div>' +
+                            '<h3 class="property-card__title">' + item.title + '</h3>' +
+                            '<div class="property-card__specs-row">' +
+                                '<span class="spec-pill"><strong>' + item.bedrooms + '</strong> BHK</span>' +
+                                '<span class="spec-pill"><strong>' + item.areaSqFt + '</strong> sq.ft</span>' +
+                            '</div>' +
+                            '<div class="property-card__actions" style="margin-top: 16px;">' +
+                                '<a href="property-detail.html?id=' + item.id + '" class="btn btn--primary btn--sm" style="flex: 1;">View Specs</a>' +
+                                '<a href="calculator.html?price=' + item.price + '&title=' + encodeURIComponent(item.title) + '" class="btn btn--outline btn--sm">EMI</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</article>';
+                }).join('');
+            }
+        });
+    </script>
+</body>
+</html>
