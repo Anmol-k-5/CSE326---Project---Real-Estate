@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Wishlist & Comparison Matrix - DreamNest</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets: Mukesh's Design System & Kunal's Components -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         UNIVERSAL NAVIGATION BAR (6-Page Shared Navigation by Mukesh)
+         ====================================================================== -->
+    <header class="site-header">
+        <div class="site-container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="index.html" class="brand-logo" aria-label="DreamNest Home">
+                    <span class="brand-logo__icon">🏰</span>
+                    <div>
+                        <span>DreamNest</span>
+                        <span class="brand-logo__sub">Verified Properties</span>
+                    </div>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="properties.html" class="nav-link">All Properties</a></li>
+                    <li><a href="calculator.html" class="nav-link">EMI & Finance</a></li>
+                    <li><a href="saved.html" class="nav-link is-active">Wishlist & Compare</a></li>
+                    <li><a href="contact.html" class="nav-link">Book a Visit</a></li>
+                    <li><a href="about.html" class="nav-link">About & Team</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="saved.html" class="header-badge-btn" title="View your saved wishlist">
+                        <span>❤️ Saved</span>
+                        <span class="counter-badge" id="favoritesCountBadge" style="display: none;">0</span>
+                    </a>
+                    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggleBtn" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="hero-section" style="padding: 48px 0 40px 0;">
+            <div class="site-container">
+                <div class="hero-content">
+                    <div class="hero-pill-badge">
+                        <span>⭐ Personal Homebuyer Hub</span>
+                    </div>
+                    <h1 class="hero-title" style="font-size: 36px;">
+                        Wishlist & <span>Property Comparison</span>
+                    </h1>
+                    <p class="hero-subtitle" style="font-size: 16px; margin-bottom: 0;">
+                        Review your shortlisted dream homes, track price specs, and evaluate up to 3 properties side-by-side across verified parameters.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Dashboard Section -->
+        <section class="site-container" style="margin: 40px auto 60px auto;">
+            
+            <!-- Tab Navigation Bar -->
+            <div class="saved-tabs-bar">
+                <button type="button" class="saved-tab-btn is-active" data-saved-tab="panelFavorites" id="tabFavBtn">
+                    <span>❤️ Bookmarked Homes</span>
+                    <span class="counter-badge" id="tabFavCount" style="background-color: #2563eb; color: #ffffff; padding: 2px 8px; border-radius: 12px; font-size: 12px;">0</span>
+                </button>
+                <button type="button" class="saved-tab-btn" data-saved-tab="panelCompare" id="tabCompareBtn">
+                    <span>⚖️ Side-by-Side Comparison</span>
+                    <span class="counter-badge" id="tabCompareCount" style="background-color: #f59e0b; color: #ffffff; padding: 2px 8px; border-radius: 12px; font-size: 12px;">0 / 3</span>
+                </button>
+            </div>
+
+            <!-- ==============================================================
+                 TAB PANEL 1: SAVED WISHLIST
+                 ============================================================== -->
+            <div class="saved-tab-panel is-active" id="panelFavorites">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <h2 style="font-size: 22px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">Your Saved Residences</h2>
+                        <p style="font-size: 14px; color: #64748b; margin: 0;">Persisted in your browser via LocalStorage for uninterrupted browsing.</p>
+                    </div>
+                    <button type="button" class="btn btn--outline btn--sm" id="clearAllFavoritesBtn" style="color: #ef4444; border-color: #fca5a5;">
+                        🗑️ Clear All Saved
+                    </button>
+                </div>
+
+                <!-- Saved Properties Grid -->
+                <div class="properties-grid" id="savedFavoritesGrid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- ==============================================================
+                 TAB PANEL 2: COMPARISON MATRIX (UP TO 3 PROPERTIES)
+                 ============================================================== -->
+            <div class="saved-tab-panel" id="panelCompare">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <h2 style="font-size: 22px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0;">Side-by-Side Comparison Matrix</h2>
+                        <p style="font-size: 14px; color: #64748b; margin: 0;">Direct architectural parameter, price per sq.ft, and amenities comparison.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="properties.html" class="btn btn--outline btn--sm">
+                            + Add More from Catalog
+                        </a>
+                        <button type="button" class="btn btn--outline btn--sm" id="clearCompareBtn" style="color: #ef4444; border-color: #fca5a5;">
+                            Clear Comparison
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Matrix Table Container -->
+                <div id="compareMatrixContainer">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Floating Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scroll-To-Top Button -->
+    <button type="button" class="scroll-to-top-btn" id="scrollToTopBtn" aria-label="Scroll to top" title="Scroll to top">↑</button>
+
+    <!-- Universal Site Footer -->
+    <footer class="site-footer">
+        <div class="site-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🏰 DreamNest Realty</h3>
+                    <p>India's premier transparent real estate discovery platform. Connecting discerning homebuyers with verified builders and authentic resale properties.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">All Properties</a></li>
+                        <li><a href="calculator.html">EMI & Financial Tools</a></li>
+                        <li><a href="saved.html">Wishlist & Compare</a></li>
+                        <li><a href="contact.html">Book a Visit</a></li>
+                        <li><a href="about.html">About & Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Direct Contact</h4>
+                    <ul class="footer-links">
+                        <li>📍 Brigade Plaza, MG Road, Bengaluru</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ contact@dreamnest.example</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Academic Submission</h4>
+                    <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
+                        CSE326 Web Development Project<br>
+                        3-Member Team Collaboration (Anmol, Mukesh, Kunal)
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 DreamNest Real Estate Project • All Rights Reserved.</p>
+                <p>Semantic HTML5 &bull; Modular CSS3 &bull; Vanilla JavaScript ES6+</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts: Anmol's Data & State, Kunal's Components -->
+    <script src="js/properties-data.js"></script>
+    <script src="js/storage-state.js"></script>
+    <script src="js/modal-contact.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
+            var navLinks = document.querySelector('.nav-links');
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function () {
+                    navLinks.classList.toggle('is-open');
+                });
+            }
+
+            // Sync Header Badge
+            function updateHeaderBadge() {
+                if (window.StorageState) {
+                    var count = window.StorageState.getFavorites().length;
+                    var badge = document.getElementById('favoritesCountBadge');
+                    if (badge) {
+                        badge.textContent = count;
+                        badge.style.display = count > 0 ? 'inline-block' : 'none';
+                    }
+                    var tabBadge = document.getElementById('tabFavCount');
+                    if (tabBadge) tabBadge.textContent = count;
+                }
+            }
+
+            // Tab Switching Logic
+            var tabBtns = document.querySelectorAll('.saved-tab-btn');
+            var tabPanels = document.querySelectorAll('.saved-tab-panel');
+            tabBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    tabBtns.forEach(function (b) { b.classList.remove('is-active'); });
+                    tabPanels.forEach(function (p) { p.classList.remove('is-active'); });
+
+                    btn.classList.add('is-active');
+                    var targetId = btn.getAttribute('data-saved-tab');
+                    var panel = document.getElementById(targetId);
+                    if (panel) panel.classList.add('is-active');
+                });
+            });
+
+            // ==============================================================
+            // 1. RENDER WISHLIST FAVORITES
+            // ==============================================================
+            function renderFavorites() {
+                var container = document.getElementById('savedFavoritesGrid');
+                if (!container || !window.StorageState || !window.RealEstateData) return;
+
+                var favIds = window.StorageState.getFavorites();
+                updateHeaderBadge();
+
+                if (favIds.length === 0) {
+                    container.innerHTML = 
+                        '<div class="empty-state-box" style="grid-column: 1 / -1;">' +
+                            '<div class="empty-state-box__icon">💔</div>' +
+                            '<h3>Your Wishlist is Currently Empty</h3>' +
+                            '<p>You have not saved any verified residences to your shortlist yet. Click the heart icon on any property to save it here for later.</p>' +
+                            '<a href="properties.html" class="btn btn--primary btn--md">Explore Verified Listings</a>' +
+                        '</div>';
+                    return;
+                }
+
+                var allProps = window.RealEstateData.getAllProperties();
+                var savedProps = favIds.map(function (id) {
+                    return allProps.find(function (p) { return p.id === id; });
+                }).filter(Boolean);
+
+                container.innerHTML = savedProps.map(function (prop) {
+                    return '<article class="property-card" data-id="' + prop.id + '">' +
+                        '<div class="property-card__media">' +
+                            '<img src="' + prop.mainImage + '" alt="' + prop.title + '" class="property-card__img" />' +
+                            '<div class="property-card__badges">' +
+                                '<span class="badge badge--sale">For ' + prop.purpose + '</span>' +
+                            '</div>' +
+                            '<button type="button" class="property-card__fav-btn is-active" data-remove-fav="' + prop.id + '" title="Remove from wishlist">' +
+                                '<svg viewBox="0 0 24 24" class="heart-icon"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>' +
+                            '</button>' +
+                            '<div class="property-card__price-banner">' + prop.formattedPrice + '</div>' +
+                        '</div>' +
+                        '<div class="property-card__content">' +
+                            '<div class="property-card__header-meta">' +
+                                '<span class="property-card__tag">' + prop.type + '</span>' +
+                                '<span class="property-card__city">📍 ' + prop.neighborhood + ', ' + prop.city + '</span>' +
+                            '</div>' +
+                            '<h3 class="property-card__title">' + prop.title + '</h3>' +
+                            '<div class="property-card__specs-row">' +
+                                '<span class="spec-pill"><strong>' + prop.bedrooms + '</strong> BHK</span>' +
+                                '<span class="spec-pill"><strong>' + prop.bathrooms + '</strong> Baths</span>' +
+                                '<span class="spec-pill"><strong>' + prop.areaSqFt + '</strong> sq.ft</span>' +
+                            '</div>' +
+                            '<div class="property-card__actions" style="margin-top: 16px;">' +
+                                '<a href="property-detail.html?id=' + prop.id + '" class="btn btn--primary btn--sm" style="flex: 1;">View Full Specs</a>' +
+                                '<a href="calculator.html?price=' + prop.price + '&title=' + encodeURIComponent(prop.title) + '" class="btn btn--outline btn--sm">EMI</a>' +
+                                '<button type="button" class="btn btn--outline btn--sm" data-add-to-comp="' + prop.id + '" title="Add to comparison">+ Compare</button>' +
+                            '</div>' +
+                        '</div>' +
+                    '</article>';
+                }).join('');
+
+                // Attach remove handlers
+                document.querySelectorAll('[data-remove-fav]').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var id = parseInt(btn.getAttribute('data-remove-fav'), 10);
+                        window.StorageState.toggleFavorite(id);
+                        if (window.UIUtils) window.UIUtils.showToast('Removed property from Wishlist', 'info');
+                        renderFavorites();
+                    });
+                });
+
+                // Attach add to compare handlers
+                document.querySelectorAll('[data-add-to-comp]').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var id = parseInt(btn.getAttribute('data-add-to-comp'), 10);
+                        var res = window.StorageState.addToCompare(id);
+                        if (res.success) {
+                            if (window.UIUtils) window.UIUtils.showToast('Added to comparison matrix!', 'success');
+                            renderCompareMatrix();
+                        } else {
+                            if (window.UIUtils) window.UIUtils.showToast(res.reason, 'warning');
+                        }
+                    });
+                });
+            }
+
+            // Clear All Favorites Button
+            var clearFavBtn = document.getElementById('clearAllFavoritesBtn');
+            if (clearFavBtn) {
+                clearFavBtn.addEventListener('click', function () {
+                    if (window.StorageState.getFavorites().length === 0) return;
+                    if (confirm('Are you sure you want to clear your entire wishlist?')) {
+                        window.StorageState.clearFavorites();
+                        if (window.UIUtils) window.UIUtils.showToast('Wishlist cleared.', 'info');
+                        renderFavorites();
+                    }
+                });
+            }
+
+            // ==============================================================
+            // 2. RENDER COMPARISON MATRIX
+            // ==============================================================
+            function renderCompareMatrix() {
+                var container = document.getElementById('compareMatrixContainer');
+                var countBadge = document.getElementById('tabCompareCount');
+                if (!container || !window.StorageState || !window.RealEstateData) return;
+
+                var compareIds = window.StorageState.getCompareList();
+                if (countBadge) countBadge.textContent = compareIds.length + ' / 3';
+
+                if (compareIds.length === 0) {
+                    container.innerHTML = 
+                        '<div class="empty-state-box">' +
+                            '<div class="empty-state-box__icon">⚖️</div>' +
+                            '<h3>No Properties in Comparison Queue</h3>' +
+                            '<p>Compare up to 3 verified residential properties side-by-side to review differences in room configuration, carpet area, facing, and luxury amenities.</p>' +
+                            '<a href="properties.html" class="btn btn--primary btn--md">Select Properties from Catalog</a>' +
+                        '</div>';
+                    return;
+                }
+
+                var allProps = window.RealEstateData.getAllProperties();
+                var props = compareIds.map(function (id) {
+                    return allProps.find(function (p) { return p.id === id; });
+                }).filter(Boolean);
+
+                // Build Table HTML
+                var commonAmenities = [
+                    'Unobstructed View',
+                    'Swimming Pool',
+                    'Italian Marble Floors',
+                    'EV Car Charging Station',
+                    '24/7 Multi-Tier Security',
+                    'High-Speed Smart Elevators',
+                    'Clubhouse Access'
+                ];
+
+                var html = '<div class="compare-matrix-wrapper"><table class="compare-table">';
+                
+                // Head row with property preview
+                html += '<thead><tr><th class="compare-attr-col">Property Overview</th>';
+                props.forEach(function (p) {
+                    html += '<td class="compare-prop-col">' +
+                        '<div style="position: relative; margin-bottom: 8px;">' +
+                            '<img src="' + p.mainImage + '" alt="' + p.title + '" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px;" />' +
+                            '<button type="button" class="btn btn--outline btn--sm" data-remove-compare="' + p.id + '" style="position: absolute; top: 6px; right: 6px; background: rgba(255,255,255,0.9); padding: 4px 8px; font-size: 11px; color: #ef4444;" title="Remove from compare">✕</button>' +
+                        '</div>' +
+                        '<h4 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">' + p.title + '</h4>' +
+                        '<div style="font-size: 18px; font-weight: 800; color: #1e3a8a;">' + p.formattedPrice + '</div>' +
+                        '<div style="font-size: 12px; color: #64748b;">Rate: ₹' + Math.round(p.price / p.areaSqFt).toLocaleString('en-IN') + '/sq.ft</div>' +
+                    '</td>';
+                });
+                html += '</tr></thead><tbody>';
+
+                // Row: City & Locality
+                html += '<tr><th class="compare-attr-col">📍 City & Neighborhood</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col">' + p.neighborhood + ', ' + p.city + '</td>'; });
+                html += '</tr>';
+
+                // Row: Configuration
+                html += '<tr><th class="compare-attr-col">🛏️ Bedrooms (BHK)</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col"><strong>' + p.bedrooms + ' BHK</strong> (' + p.bathrooms + ' Bathrooms)</td>'; });
+                html += '</tr>';
+
+                // Row: Carpet Area
+                html += '<tr><th class="compare-attr-col">📐 Carpet Area</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col"><strong>' + p.areaSqFt + ' sq.ft</strong></td>'; });
+                html += '</tr>';
+
+                // Row: Property Type
+                html += '<tr><th class="compare-attr-col">🏢 Property Classification</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col">' + p.type + ' (' + p.purpose + ')</td>'; });
+                html += '</tr>';
+
+                // Row: Furnishing
+                html += '<tr><th class="compare-attr-col">🛋️ Furnishing Status</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col">' + p.furnishing + '</td>'; });
+                html += '</tr>';
+
+                // Row: Facing
+                html += '<tr><th class="compare-attr-col">🧭 Directional Facing</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col">' + p.facing + '</td>'; });
+                html += '</tr>';
+
+                // Row: Floor Level
+                html += '<tr><th class="compare-attr-col">🏢 Floor Position</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col">Floor ' + p.floorNumber + ' of ' + p.totalFloors + '</td>'; });
+                html += '</tr>';
+
+                // Row: Parking
+                html += '<tr><th class="compare-attr-col">🚗 Reserved Parking</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col">' + p.parkingSpots + ' Covered Slots</td>'; });
+                html += '</tr>';
+
+                // Row: RERA Registration
+                html += '<tr><th class="compare-attr-col">📜 RERA Registration</th>';
+                props.forEach(function (p) { html += '<td class="compare-prop-col"><span style="font-family: monospace; font-size: 12px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">' + p.reraId + '</span></td>'; });
+                html += '</tr>';
+
+                // Amenities rows
+                commonAmenities.forEach(function (amenity) {
+                    html += '<tr><th class="compare-attr-col">✓ ' + amenity + '</th>';
+                    props.forEach(function (p) {
+                        var hasAmenity = p.amenities.some(function (a) { return a.toLowerCase().indexOf(amenity.toLowerCase().split(' ')[0]) !== -1; });
+                        html += '<td class="compare-prop-col">' +
+                            (hasAmenity ? '<span class="amenity-check">✓ Yes</span>' : '<span class="amenity-cross">— No</span>') +
+                        '</td>';
+                    });
+                    html += '</tr>';
+                });
+
+                // Action Row
+                html += '<tr><th class="compare-attr-col">Next Steps</th>';
+                props.forEach(function (p) {
+                    html += '<td class="compare-prop-col">' +
+                        '<div style="display: flex; flex-direction: column; gap: 8px;">' +
+                            '<a href="property-detail.html?id=' + p.id + '" class="btn btn--primary btn--sm">View Full Specs</a>' +
+                            '<a href="calculator.html?price=' + p.price + '&title=' + encodeURIComponent(p.title) + '" class="btn btn--outline btn--sm">Calculate EMI</a>' +
+                        '</div>' +
+                    '</td>';
+                });
+                html += '</tr>';
+
+                html += '</tbody></table></div>';
+                container.innerHTML = html;
+
+                // Attach remove compare button handlers
+                document.querySelectorAll('[data-remove-compare]').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var id = parseInt(btn.getAttribute('data-remove-compare'), 10);
+                        window.StorageState.removeFromCompare(id);
+                        if (window.UIUtils) window.UIUtils.showToast('Removed from compare queue', 'info');
+                        renderCompareMatrix();
+                    });
+                });
+            }
+
+            // Clear Compare Queue Button
+            var clearCompBtn = document.getElementById('clearCompareBtn');
+            if (clearCompBtn) {
+                clearCompBtn.addEventListener('click', function () {
+                    if (window.StorageState.getCompareList().length === 0) return;
+                    window.StorageState.clearCompare();
+                    if (window.UIUtils) window.UIUtils.showToast('Comparison queue cleared.', 'info');
+                    renderCompareMatrix();
+                });
+            }
+
+            // Initial Renders
+            renderFavorites();
+            renderCompareMatrix();
+        });
+    </script>
+</body>
+</html>

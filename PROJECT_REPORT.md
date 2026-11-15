@@ -114,7 +114,21 @@ The application follows a decoupled model-view-controller (MVC) inspired client-
     * RFC 5322 compliant email regex: `^[^\s@]+@[^\s@]+\.[^\s@]+$`
     * Dynamic past-date blocker setting `min` attribute on HTML5 date picker.
 * **`css/components.css`:**
-  - Engineered component-specific styles for the mortgage calculator card, modal dialog overlay, validation error messages, and floating toast notification banners.
+  - Engineered component-specific styles for the mortgage calculator card, modal dialog overlay, validation error messages, floating toast notification banners, 2D floor plan blueprints, and comparison tables.
+
+---
+
+### 4.4 Complete 7-Webpage Application Architecture
+
+| # | Webpage | File Name | Key Features & Functional Modules |
+| :---: | :--- | :--- | :--- |
+| **1** | **Home** | `index.html` | Hero spotlight banner with instant search redirect, verified property carousel, popular city discovery grid, platform value pillars, customer testimonials, and universal header/footer. |
+| **2** | **All Properties** | `properties.html` | Master catalog of 12 verified listings, debounced search bar, multi-criteria filter panel (City, Type, Intent, Budget slider, BHK checkboxes), active filter chips, sort engine, and quick modal preview. |
+| **3** | **Property Detail** | `property-detail.html` | Deep-dive specs page accepting dynamic URL query (`?id=...`), high-resolution photo gallery with thumbnail switcher, 2D floor blueprint schematic illustration, neighborhood transit distance radar (Metro, Airport, Hospital, School, Mall), certified relationship manager card with direct WhatsApp/Call triggers, and embedded site visit booking form. |
+| **4** | **EMI & Finance** | `calculator.html` | 3-in-1 Financial Hub: (1) Interactive Mortgage EMI Calculator with sliders & amortization breakdown; (2) State Stamp Duty & Registration Estimator (Maharashtra, Karnataka, Delhi, Telangana, Goa, West Bengal); (3) Gross Rental Yield & Capital Payback Calculator; plus a live Q4 2026 Bank Interest Rates Comparison Table (SBI, HDFC, ICICI, Axis, BoB) and Financial FAQ accordion. |
+| **5** | **Wishlist & Compare** | `saved.html` | Dual-tab personal dashboard: (1) Saved Wishlist persisted via LocalStorage with dynamic badge counter and clear options; (2) Side-by-Side Property Comparison Matrix comparing up to 3 properties across 15+ architectural parameters, price per sq.ft, and verified amenities checklist. |
+| **6** | **Book a Visit** | `contact.html` | Private property walkthrough appointment scheduling form with regex validation, 3 metro experience center physical office cards (Bengaluru Flagship, Mumbai South, Gurugram CyberCity), and Customer Support FAQ accordion. |
+| **7** | **About & Team** | `about.html` | Platform vision, academic CSE326 project submission documentation, complete 3-member team responsibility breakdown matrix (Anmol, Mukesh, Kunal), technology stack badges, and modular architecture overview. |
 
 ---
 

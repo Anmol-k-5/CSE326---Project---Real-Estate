@@ -402,13 +402,23 @@ window.FilterEngine = window.FilterEngine || {};
 
               <p class="property-card__short-desc">${prop.description.substring(0, 110)}...</p>
 
-              <div class="property-card__actions">
+              <div class="property-card__actions" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <a 
+                  href="property-detail.html?id=${prop.id}" 
+                  class="btn btn--primary btn--sm" 
+                  style="flex: 1; text-align: center; text-decoration: none;"
+                  title="Open full architectural specs page"
+                >
+                  Full Specs
+                </a>
+
                 <button 
                   type="button" 
-                  class="btn btn--primary btn--sm view-details-trigger" 
+                  class="btn btn--outline btn--sm view-details-trigger" 
                   data-prop-id="${prop.id}"
+                  title="Quick preview modal"
                 >
-                  View Details
+                  Quick View
                 </button>
 
                 <button 
@@ -417,18 +427,17 @@ window.FilterEngine = window.FilterEngine || {};
                   data-compare-id="${prop.id}"
                   title="Compare with other properties"
                 >
-                  ${isInCompare ? "✓ In Compare" : "+ Compare"}
+                  ${isInCompare ? "✓ Compare" : "+ Compare"}
                 </button>
 
-                <button 
-                  type="button" 
-                  class="btn btn--text btn--sm emi-shortcut-trigger" 
-                  data-prop-price="${prop.price}" 
-                  data-prop-title="${prop.title}"
+                <a 
+                  href="calculator.html?price=${prop.price}&title=${encodeURIComponent(prop.title)}" 
+                  class="btn btn--text btn--sm" 
+                  style="text-decoration: none;"
                   title="Estimate monthly loan EMI"
                 >
                   EMI
-                </button>
+                </a>
               </div>
             </div>
           </article>
@@ -481,6 +490,9 @@ window.FilterEngine = window.FilterEngine || {};
             if (addResult.success) {
               btn.classList.add("is-active");
               btn.textContent = "✓ In Compare";
+              if (window.UIUtils && typeof window.UIUtils.showToast === "function") {
+                window.UIUtils.showToast("Added to compare! View under 'Wishlist & Compare'", "success");
+              }
             } else if (window.UIUtils && typeof window.UIUtils.showToast === "function") {
               window.UIUtils.showToast(addResult.reason, "warning");
             }
