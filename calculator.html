@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator & Financial Hub - DreamNest</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets: Mukesh's Design System & Kunal's Components -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         UNIVERSAL NAVIGATION BAR (6-Page Shared Navigation by Mukesh)
+         ====================================================================== -->
+    <header class="site-header">
+        <div class="site-container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="index.html" class="brand-logo" aria-label="DreamNest Home">
+                    <span class="brand-logo__icon">🏰</span>
+                    <div>
+                        <span>DreamNest</span>
+                        <span class="brand-logo__sub">Verified Properties</span>
+                    </div>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="properties.html" class="nav-link">All Properties</a></li>
+                    <li><a href="calculator.html" class="nav-link is-active">EMI & Finance</a></li>
+                    <li><a href="saved.html" class="nav-link">Wishlist & Compare</a></li>
+                    <li><a href="contact.html" class="nav-link">Book a Visit</a></li>
+                    <li><a href="about.html" class="nav-link">About & Team</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="saved.html" class="header-badge-btn" title="View your saved wishlist">
+                        <span>❤️ Saved</span>
+                        <span class="counter-badge" id="favoritesCountBadge" style="display: none;">0</span>
+                    </a>
+                    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggleBtn" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Header -->
+        <section class="hero-section" style="padding: 48px 0 40px 0;">
+            <div class="site-container">
+                <div class="hero-content">
+                    <div class="hero-pill-badge">
+                        <span>🧮 Real Estate Financial Suite</span>
+                    </div>
+                    <h1 class="hero-title" style="font-size: 36px;">
+                        Mortgage & <span>Investment Calculator</span>
+                    </h1>
+                    <p class="hero-subtitle" style="font-size: 16px; margin-bottom: 0;">
+                        Plan your home acquisition with bank-accurate EMI computations, state-wise stamp duty estimates, and gross rental yield payback metrics.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Financial Hub Section -->
+        <section class="site-container" style="margin: 40px auto 60px auto;">
+            
+            <!-- Tool Switcher Tabs -->
+            <div style="display: flex; justify-content: center;">
+                <div class="calc-nav-tabs">
+                    <button type="button" class="calc-nav-tab is-active" data-calc-target="tabEmi">
+                        🏠 Home Loan EMI
+                    </button>
+                    <button type="button" class="calc-nav-tab" data-calc-target="tabStampDuty">
+                        📜 State Stamp Duty
+                    </button>
+                    <button type="button" class="calc-nav-tab" data-calc-target="tabRentalYield">
+                        📈 Rental Yield & ROI
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pre-fill Property Notice Bar -->
+            <div id="calcPropertyNotice" style="display: none; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 12px 20px; margin-bottom: 24px; text-align: center; font-size: 14px; color: #1e40af; font-weight: 600;">
+            </div>
+
+            <!-- ==============================================================
+                 PANEL 1: HOME LOAN EMI CALCULATOR
+                 ============================================================== -->
+            <div class="calc-panel-view is-active" id="tabEmi">
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <span class="calculator-tag">Interactive Loan Planner</span>
+                        <h2 class="calculator-title">Monthly Mortgage & EMI Estimator</h2>
+                        <p class="calculator-desc">
+                            Uses official banking reducing-balance formulas: EMI = [P × R × (1+R)^N] / [(1+R)^N - 1].
+                        </p>
+                    </div>
+
+                    <div class="calculator-body">
+                        <!-- Inputs Column -->
+                        <div class="calc-controls-col">
+                            
+                            <!-- Property Price -->
+                            <div class="calc-form-group">
+                                <label for="calcPropertyPrice" class="calc-label">Total Property Agreement Value (₹)</label>
+                                <input 
+                                    type="number" 
+                                    id="calcPropertyPrice" 
+                                    class="calc-number-input" 
+                                    value="15000000" 
+                                    min="500000" 
+                                    max="200000000" 
+                                    step="100000" 
+                                />
+                                <span class="calc-hint">Enter property value between ₹5 Lakh and ₹20 Crore</span>
+                            </div>
+
+                            <!-- Down Payment Slider -->
+                            <div class="calc-form-group">
+                                <div class="calc-label-row">
+                                    <label for="calcDownPayment" class="calc-label">Down Payment Contribution</label>
+                                    <span class="calc-val-badge" id="calcDownPaymentText">₹ 30,00,000 (20%)</span>
+                                </div>
+                                <input 
+                                    type="range" 
+                                    id="calcDownPayment" 
+                                    class="calc-slider" 
+                                    min="10" 
+                                    max="80" 
+                                    step="5" 
+                                    value="20" 
+                                />
+                                <div class="calc-pills-row">
+                                    <button type="button" class="calc-pill-btn" data-calc-dp="10">10%</button>
+                                    <button type="button" class="calc-pill-btn" data-calc-dp="20">20% (Standard)</button>
+                                    <button type="button" class="calc-pill-btn" data-calc-dp="30">30%</button>
+                                    <button type="button" class="calc-pill-btn" data-calc-dp="50">50%</button>
+                                </div>
+                            </div>
+
+                            <!-- Loan Tenure -->
+                            <div class="calc-form-group">
+                                <div class="calc-label-row">
+                                    <label for="calcTenure" class="calc-label">Loan Duration (Tenure)</label>
+                                    <span class="calc-val-badge" id="calcTenureText">20 Years (240 months)</span>
+                                </div>
+                                <input 
+                                    type="range" 
+                                    id="calcTenure" 
+                                    class="calc-slider" 
+                                    min="5" 
+                                    max="30" 
+                                    step="1" 
+                                    value="20" 
+                                />
+                                <div class="calc-slider-scale">
+                                    <span>5 Yrs</span>
+                                    <span>15 Yrs</span>
+                                    <span>20 Yrs</span>
+                                    <span>30 Yrs</span>
+                                </div>
+                            </div>
+
+                            <!-- Interest Rate -->
+                            <div class="calc-form-group">
+                                <div class="calc-label-row">
+                                    <label for="calcRate" class="calc-label">Annual Interest Rate (% p.a.)</label>
+                                    <span class="calc-val-badge" id="calcRateText">8.50 % p.a.</span>
+                                </div>
+                                <input 
+                                    type="range" 
+                                    id="calcRate" 
+                                    class="calc-slider" 
+                                    min="6.5" 
+                                    max="14.0" 
+                                    step="0.05" 
+                                    value="8.50" 
+                                />
+                                <div class="calc-slider-scale">
+                                    <span>6.5%</span>
+                                    <span>8.5% (Avg)</span>
+                                    <span>11.0%</span>
+                                    <span>14.0%</span>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn--outline btn--sm" id="calcResetBtn">
+                                ↺ Reset to Standard Defaults
+                            </button>
+                        </div>
+
+                        <!-- Results Column -->
+                        <div class="calc-results-col">
+                            <div class="calc-primary-result-box">
+                                <span class="calc-result-sub">Estimated Monthly Installment</span>
+                                <div class="calc-result-main-number" id="calcEmiResult">₹ 1,04,140</div>
+                                <span class="calc-result-note">Per month over selected loan tenure</span>
+                            </div>
+
+                            <div class="calc-breakdown-card">
+                                <div class="calc-breakdown-row">
+                                    <span class="calc-breakdown-label">
+                                        <span class="color-dot color-dot--principal"></span> Principal Loan Amount
+                                    </span>
+                                    <strong class="calc-breakdown-val" id="calcPrincipalResult">₹ 1,20,00,000</strong>
+                                </div>
+
+                                <div class="calc-breakdown-row">
+                                    <span class="calc-breakdown-label">
+                                        <span class="color-dot color-dot--interest"></span> Total Interest Payable
+                                    </span>
+                                    <strong class="calc-breakdown-val" id="calcInterestResult">₹ 1,29,93,534</strong>
+                                </div>
+
+                                <div class="calc-breakdown-row calc-breakdown-row--total">
+                                    <span class="calc-breakdown-label">Total Amount Payable (P + I)</span>
+                                    <strong class="calc-breakdown-val" id="calcTotalResult">₹ 2,49,93,534</strong>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 20px; text-align: center;">
+                                <a href="contact.html" class="btn btn--primary btn--md" style="width: 100%;">
+                                    Check Pre-Approved Bank Loan Eligibility
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==============================================================
+                 PANEL 2: STAMP DUTY & REGISTRATION CHARGES ESTIMATOR
+                 ============================================================== -->
+            <div class="calc-panel-view" id="tabStampDuty">
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <span class="calculator-tag">Government Statutory Charges</span>
+                        <h2 class="calculator-title">State-Wise Stamp Duty & Registration Estimator</h2>
+                        <p class="calculator-desc">
+                            Estimate official state government registration duties and metro cess levied on real estate purchases.
+                        </p>
+                    </div>
+
+                    <div class="calculator-body">
+                        <!-- Inputs -->
+                        <div class="calc-controls-col">
+                            <div class="calc-form-group">
+                                <label for="stampPropertyPrice" class="calc-label">Agreement Value (₹)</label>
+                                <input 
+                                    type="number" 
+                                    id="stampPropertyPrice" 
+                                    class="calc-number-input" 
+                                    value="15000000" 
+                                    step="100000" 
+                                />
+                            </div>
+
+                            <div class="calc-form-group">
+                                <label for="stampStateSelect" class="calc-label">Property Location State</label>
+                                <select id="stampStateSelect" class="filter-select" style="width: 100%; padding: 12px;">
+                                    <option value="Maharashtra" data-rate="6.0">Maharashtra (6.0% incl. Metro Cess)</option>
+                                    <option value="Karnataka" data-rate="5.6">Karnataka (5.6% for &gt;₹45 Lakh)</option>
+                                    <option value="Delhi" data-rate="6.0">Delhi NCR (6.0% Male / 4.0% Female)</option>
+                                    <option value="Telangana" data-rate="7.5">Telangana (7.5%)</option>
+                                    <option value="Goa" data-rate="4.5">Goa (4.5%)</option>
+                                    <option value="West Bengal" data-rate="6.0">West Bengal (6.0%)</option>
+                                </select>
+                            </div>
+
+                            <div class="calc-form-group">
+                                <label for="stampBuyerGender" class="calc-label">Buyer Category</label>
+                                <select id="stampBuyerGender" class="filter-select" style="width: 100%; padding: 12px;">
+                                    <option value="general">Individual / Male</option>
+                                    <option value="female">Female Sole Owner (1% State Concession where applicable)</option>
+                                    <option value="joint">Joint (Male + Female)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Results -->
+                        <div class="calc-results-col">
+                            <div class="calc-primary-result-box" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);">
+                                <span class="calc-result-sub" style="color: #93c5fd;">Total Govt Statutory Charges</span>
+                                <div class="calc-result-main-number" id="stampTotalResult" style="color: #ffffff;">₹ 9,30,000</div>
+                                <span class="calc-result-note" style="color: #cbd5e1;">Payable to State Sub-Registrar Office</span>
+                            </div>
+
+                            <div class="calc-breakdown-card">
+                                <div class="calc-breakdown-row">
+                                    <span class="calc-breakdown-label">Stamp Duty Fee (<span id="stampDutyRateDisplay">6.0%</span>)</span>
+                                    <strong class="calc-breakdown-val" id="stampDutyAmountDisplay">₹ 9,00,000</strong>
+                                </div>
+                                <div class="calc-breakdown-row">
+                                    <span class="calc-breakdown-label">Registration Charges (Statutory Cap)</span>
+                                    <strong class="calc-breakdown-val" id="stampRegFeeDisplay">₹ 30,000</strong>
+                                </div>
+                                <div class="calc-breakdown-row calc-breakdown-row--total">
+                                    <span class="calc-breakdown-label">Effective All-Inclusive Cost</span>
+                                    <strong class="calc-breakdown-val" id="stampGrandTotalDisplay">₹ 1,59,30,000</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==============================================================
+                 PANEL 3: RENTAL YIELD & ROI PAYBACK CALCULATOR
+                 ============================================================== -->
+            <div class="calc-panel-view" id="tabRentalYield">
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <span class="calculator-tag">Investor ROI Analysis</span>
+                        <h2 class="calculator-title">Gross Rental Yield & Payback Timeline</h2>
+                        <p class="calculator-desc">
+                            Calculate the gross annual capitalization rate and investment payback duration from residential tenancy.
+                        </p>
+                    </div>
+
+                    <div class="calculator-body">
+                        <!-- Inputs -->
+                        <div class="calc-controls-col">
+                            <div class="calc-form-group">
+                                <label for="yieldPropertyCost" class="calc-label">Total Acquisition Cost (₹)</label>
+                                <input 
+                                    type="number" 
+                                    id="yieldPropertyCost" 
+                                    class="calc-number-input" 
+                                    value="15000000" 
+                                    step="100000" 
+                                />
+                            </div>
+
+                            <div class="calc-form-group">
+                                <label for="yieldMonthlyRent" class="calc-label">Anticipated Monthly Rental Income (₹)</label>
+                                <input 
+                                    type="number" 
+                                    id="yieldMonthlyRent" 
+                                    class="calc-number-input" 
+                                    value="45000" 
+                                    step="2000" 
+                                />
+                                <span class="calc-hint">Typical metro yield ranges between 3.0% and 4.5%</span>
+                            </div>
+
+                            <div class="calc-form-group">
+                                <label for="yieldMaintenance" class="calc-label">Monthly Maintenance / Society Dues (₹)</label>
+                                <input 
+                                    type="number" 
+                                    id="yieldMaintenance" 
+                                    class="calc-number-input" 
+                                    value="5000" 
+                                    step="500" 
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Results -->
+                        <div class="calc-results-col">
+                            <div class="calc-primary-result-box" style="background: linear-gradient(135deg, #065f46 0%, #0f172a 100%);">
+                                <span class="calc-result-sub" style="color: #a7f3d0;">Gross Annual Rental Yield</span>
+                                <div class="calc-result-main-number" id="yieldPercentResult" style="color: #ffffff;">3.60 %</div>
+                                <span class="calc-result-note" style="color: #cbd5e1;">(Annual Rent / Total Cost) × 100</span>
+                            </div>
+
+                            <div class="calc-breakdown-card">
+                                <div class="calc-breakdown-row">
+                                    <span class="calc-breakdown-label">Gross Annual Rent Revenue</span>
+                                    <strong class="calc-breakdown-val" id="yieldAnnualGrossDisplay">₹ 5,40,000</strong>
+                                </div>
+                                <div class="calc-breakdown-row">
+                                    <span class="calc-breakdown-label">Net Annual Rent (Post-Maintenance)</span>
+                                    <strong class="calc-breakdown-val" id="yieldAnnualNetDisplay">₹ 4,80,000</strong>
+                                </div>
+                                <div class="calc-breakdown-row">
+                                    <span class="calc-breakdown-label">Net Rental Yield Rate</span>
+                                    <strong class="calc-breakdown-val" id="yieldNetRateDisplay">3.20 %</strong>
+                                </div>
+                                <div class="calc-breakdown-row calc-breakdown-row--total">
+                                    <span class="calc-breakdown-label">Estimated Capital Payback Period</span>
+                                    <strong class="calc-breakdown-val" id="yieldPaybackYearsDisplay">27.8 Years</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==============================================================
+                 BANK INTEREST RATES COMPARISON MATRIX
+                 ============================================================== -->
+            <div style="margin-top: 56px;">
+                <div class="section-header" style="margin-bottom: 24px;">
+                    <span class="section-tag">Current Institutional Lenders</span>
+                    <h2 class="section-title">Home Loan Interest Rates Comparison (Q4 2026)</h2>
+                    <p class="section-subtitle">Leading Indian commercial banks offering floating repo-linked lending rates (RLLR).</p>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="bank-rates-table">
+                        <thead>
+                            <tr>
+                                <th>Lending Institution</th>
+                                <th>Interest Rate (% p.a.)</th>
+                                <th>Processing Fees</th>
+                                <th>Maximum Loan Tenure</th>
+                                <th>Prepayment Charges</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>State Bank of India (SBI)</strong><br><span style="font-size: 12px; color: #64748b;">Public Sector Benchmark</span></td>
+                                <td><strong style="color: #166534; font-size: 15px;">8.40% - 9.15%</strong></td>
+                                <td>0.35% (Min ₹2,000, Max ₹10,000)</td>
+                                <td>30 Years</td>
+                                <td><span style="color: #166534; font-weight: 600;">NIL (Floating)</span></td>
+                                <td><a href="contact.html" class="btn btn--outline btn--sm">Inquire</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>HDFC Bank</strong><br><span style="font-size: 12px; color: #64748b;">Private Sector Giant</span></td>
+                                <td><strong style="color: #166534; font-size: 15px;">8.50% - 9.35%</strong></td>
+                                <td>Up to 0.50% or ₹3,000</td>
+                                <td>30 Years</td>
+                                <td><span style="color: #166534; font-weight: 600;">NIL (Floating)</span></td>
+                                <td><a href="contact.html" class="btn btn--outline btn--sm">Inquire</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ICICI Bank</strong><br><span style="font-size: 12px; color: #64748b;">Express Digital Sanction</span></td>
+                                <td><strong style="color: #166534; font-size: 15px;">8.60% - 9.40%</strong></td>
+                                <td>0.50% - 1.00%</td>
+                                <td>30 Years</td>
+                                <td><span style="color: #166534; font-weight: 600;">NIL (Floating)</span></td>
+                                <td><a href="contact.html" class="btn btn--outline btn--sm">Inquire</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Axis Bank</strong><br><span style="font-size: 12px; color: #64748b;">Fast Track Processing</span></td>
+                                <td><strong style="color: #166534; font-size: 15px;">8.65% - 9.30%</strong></td>
+                                <td>Up to 1% (Min ₹10,000)</td>
+                                <td>30 Years</td>
+                                <td><span style="color: #166534; font-weight: 600;">NIL (Floating)</span></td>
+                                <td><a href="contact.html" class="btn btn--outline btn--sm">Inquire</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bank of Baroda (BoB)</strong><br><span style="font-size: 12px; color: #64748b;">Competitive Govt Rates</span></td>
+                                <td><strong style="color: #166534; font-size: 15px;">8.40% - 9.20%</strong></td>
+                                <td>Nil to 0.25% under campaign</td>
+                                <td>30 Years</td>
+                                <td><span style="color: #166534; font-weight: 600;">NIL (Floating)</span></td>
+                                <td><a href="contact.html" class="btn btn--outline btn--sm">Inquire</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ==============================================================
+                 FINANCIAL FAQ ACCORDION
+                 ============================================================== -->
+            <div style="margin-top: 56px;">
+                <div class="section-header" style="margin-bottom: 24px;">
+                    <span class="section-tag">Homeowner Guidance</span>
+                    <h2 class="section-title">Frequently Asked Financial Questions</h2>
+                    <p class="section-subtitle">Common queries regarding home loans, tax incentives, and registration rules in India.</p>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-accordion__item is-open">
+                        <button type="button" class="faq-accordion__question">
+                            What tax deductions are available on home loans under the Indian Income Tax Act?
+                        </button>
+                        <div class="faq-accordion__answer">
+                            Under Section 80C, borrowers can claim deductions up to ₹1.5 Lakh per financial year on principal repayment. Under Section 24(b), deductions up to ₹2.0 Lakh can be claimed on interest paid for a self-occupied property. First-time buyers can also explore additional deductions under Section 80EEA subject to statutory limits.
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion__item">
+                        <button type="button" class="faq-accordion__question">
+                            How does a floating interest rate differ from a fixed interest rate?
+                        </button>
+                        <div class="faq-accordion__answer">
+                            Floating interest rates fluctuate according to RBI's Repo-Linked Lending Rate (RLLR) over time, meaning your EMI or tenure automatically adjusts when rates change. Fixed interest rates remain constant for an initial period (usually 2-5 years) providing predictable installments. Floating rate home loans have zero prepayment penalty under RBI mandates.
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion__item">
+                        <button type="button" class="faq-accordion__question">
+                            What documents are required for home loan pre-approval?
+                        </button>
+                        <div class="faq-accordion__answer">
+                            Standard requirements include PAN card, Aadhaar card, past 6 months bank account statements, salary slips for the last 3 months (or 3 years ITR & audited balance sheets for self-employed individuals), Form 16, and the builder's RERA registration certificate.
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion__item">
+                        <button type="button" class="faq-accordion__question">
+                            Can I claim stamp duty and registration expenses as a tax deduction?
+                        </button>
+                        <div class="faq-accordion__answer">
+                            Yes, stamp duty and registration fees paid during the acquisition year can be claimed as a tax deduction under Section 80C within the overall annual ceiling of ₹1.5 Lakh.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Floating Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scroll-To-Top Button -->
+    <button type="button" class="scroll-to-top-btn" id="scrollToTopBtn" aria-label="Scroll to top" title="Scroll to top">↑</button>
+
+    <!-- Universal Site Footer -->
+    <footer class="site-footer">
+        <div class="site-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🏰 DreamNest Realty</h3>
+                    <p>India's premier transparent real estate discovery platform. Connecting discerning homebuyers with verified builders and authentic resale properties.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">All Properties</a></li>
+                        <li><a href="calculator.html">EMI & Financial Tools</a></li>
+                        <li><a href="saved.html">Wishlist & Compare</a></li>
+                        <li><a href="contact.html">Book a Visit</a></li>
+                        <li><a href="about.html">About & Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Direct Contact</h4>
+                    <ul class="footer-links">
+                        <li>📍 Brigade Plaza, MG Road, Bengaluru</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ contact@dreamnest.example</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Academic Submission</h4>
+                    <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
+                        CSE326 Web Development Project<br>
+                        3-Member Team Collaboration (Anmol, Mukesh, Kunal)
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 DreamNest Real Estate Project • All Rights Reserved.</p>
+                <p>Semantic HTML5 &bull; Modular CSS3 &bull; Vanilla JavaScript ES6+</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts: Kunal's Calculator & Anmol's State -->
+    <script src="js/storage-state.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/modal-contact.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
+            var navLinks = document.querySelector('.nav-links');
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function () {
+                    navLinks.classList.toggle('is-open');
+                });
+            }
+
+            // Sync favorites badge
+            if (window.StorageState) {
+                var favBadge = document.getElementById('favoritesCountBadge');
+                if (favBadge) {
+                    var count = window.StorageState.getFavorites().length;
+                    favBadge.textContent = count;
+                    favBadge.style.display = count > 0 ? 'inline-block' : 'none';
+                }
+            }
+
+            // Subnav Tabs Switching (EMI vs Stamp Duty vs Rental Yield)
+            var tabs = document.querySelectorAll('.calc-nav-tab');
+            var panels = document.querySelectorAll('.calc-panel-view');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(function (t) { t.classList.remove('is-active'); });
+                    panels.forEach(function (p) { p.classList.remove('is-active'); });
+
+                    tab.classList.add('is-active');
+                    var targetId = tab.getAttribute('data-calc-target');
+                    var targetPanel = document.getElementById(targetId);
+                    if (targetPanel) {
+                        targetPanel.classList.add('is-active');
+                    }
+                });
+            });
+
+            // Check URL Query Parameters (?price=...&title=...)
+            var params = new URLSearchParams(window.location.search);
+            var queryPrice = params.get('price');
+            var queryTitle = params.get('title');
+            if (queryPrice) {
+                var priceNum = parseFloat(queryPrice);
+                if (!isNaN(priceNum) && priceNum > 0) {
+                    var priceInput = document.getElementById('calcPropertyPrice');
+                    var stampInput = document.getElementById('stampPropertyPrice');
+                    var yieldInput = document.getElementById('yieldPropertyCost');
+                    if (priceInput) priceInput.value = priceNum;
+                    if (stampInput) stampInput.value = priceNum;
+                    if (yieldInput) yieldInput.value = priceNum;
+
+                    var notice = document.getElementById('calcPropertyNotice');
+                    if (notice) {
+                        notice.textContent = 'Showing mortgage calculations pre-filled for: ' + (queryTitle ? decodeURIComponent(queryTitle) : 'Selected Property') + ' (₹' + priceNum.toLocaleString('en-IN') + ')';
+                        notice.style.display = 'block';
+                    }
+
+                    if (window.MortgageCalculator && typeof window.MortgageCalculator.recalculate === 'function') {
+                        window.MortgageCalculator.recalculate();
+                    }
+                }
+            }
+
+            // Format Indian Currency helper
+            function fmtINR(num) {
+                return '₹ ' + Math.round(num).toLocaleString('en-IN');
+            }
+
+            // --- STAMP DUTY LOGIC ---
+            var stampPriceInput = document.getElementById('stampPropertyPrice');
+            var stampStateSelect = document.getElementById('stampStateSelect');
+            var stampGenderSelect = document.getElementById('stampBuyerGender');
+
+            function recalculateStampDuty() {
+                if (!stampPriceInput || !stampStateSelect) return;
+                var price = parseFloat(stampPriceInput.value) || 0;
+                var opt = stampStateSelect.options[stampStateSelect.selectedIndex];
+                var baseRate = parseFloat(opt.getAttribute('data-rate')) || 6.0;
+
+                // Female discount in certain states (e.g. Maharashtra, Delhi)
+                if (stampGenderSelect && stampGenderSelect.value === 'female') {
+                    if (baseRate > 1.0) baseRate -= 1.0;
+                }
+
+                var dutyAmount = Math.round(price * (baseRate / 100));
+                // Statutory cap on registration fee
+                var regFee = Math.min(30000, Math.round(price * 0.01));
+                var totalGovt = dutyAmount + regFee;
+                var grandTotal = price + totalGovt;
+
+                document.getElementById('stampDutyRateDisplay').textContent = baseRate.toFixed(1) + '%';
+                document.getElementById('stampDutyAmountDisplay').textContent = fmtINR(dutyAmount);
+                document.getElementById('stampRegFeeDisplay').textContent = fmtINR(regFee);
+                document.getElementById('stampTotalResult').textContent = fmtINR(totalGovt);
+                document.getElementById('stampGrandTotalDisplay').textContent = fmtINR(grandTotal);
+            }
+
+            if (stampPriceInput) stampPriceInput.addEventListener('input', recalculateStampDuty);
+            if (stampStateSelect) stampStateSelect.addEventListener('change', recalculateStampDuty);
+            if (stampGenderSelect) stampGenderSelect.addEventListener('change', recalculateStampDuty);
+            recalculateStampDuty();
+
+            // --- RENTAL YIELD LOGIC ---
+            var yieldCostInput = document.getElementById('yieldPropertyCost');
+            var yieldRentInput = document.getElementById('yieldMonthlyRent');
+            var yieldMaintInput = document.getElementById('yieldMaintenance');
+
+            function recalculateYield() {
+                if (!yieldCostInput || !yieldRentInput) return;
+                var cost = parseFloat(yieldCostInput.value) || 0;
+                var rent = parseFloat(yieldRentInput.value) || 0;
+                var maint = parseFloat(yieldMaintInput ? yieldMaintInput.value : 0) || 0;
+
+                var grossAnnualRent = rent * 12;
+                var netMonthlyRent = Math.max(0, rent - maint);
+                var netAnnualRent = netMonthlyRent * 12;
+
+                var grossYieldPct = cost > 0 ? (grossAnnualRent / cost) * 100 : 0;
+                var netYieldPct = cost > 0 ? (netAnnualRent / cost) * 100 : 0;
+                var paybackYears = netAnnualRent > 0 ? (cost / netAnnualRent) : 0;
+
+                document.getElementById('yieldPercentResult').textContent = grossYieldPct.toFixed(2) + ' %';
+                document.getElementById('yieldAnnualGrossDisplay').textContent = fmtINR(grossAnnualRent);
+                document.getElementById('yieldAnnualNetDisplay').textContent = fmtINR(netAnnualRent);
+                document.getElementById('yieldNetRateDisplay').textContent = netYieldPct.toFixed(2) + ' %';
+                document.getElementById('yieldPaybackYearsDisplay').textContent = (paybackYears > 0 ? paybackYears.toFixed(1) + ' Years' : 'N/A');
+            }
+
+            if (yieldCostInput) yieldCostInput.addEventListener('input', recalculateYield);
+            if (yieldRentInput) yieldRentInput.addEventListener('input', recalculateYield);
+            if (yieldMaintInput) yieldMaintInput.addEventListener('input', recalculateYield);
+            recalculateYield();
+
+            // FAQ Accordion Toggle
+            var faqQuestions = document.querySelectorAll('.faq-accordion__question');
+            faqQuestions.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var item = btn.parentElement;
+                    item.classList.toggle('is-open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
