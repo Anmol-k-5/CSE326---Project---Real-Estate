@@ -2,133 +2,277 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport configuration for mobile responsiveness -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamNest Realty - About Us & Team Project</title>
+    <title>DreamNest - About Us & Academic Project Team</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
-<body style="font-family: Arial, Helvetica, sans-serif; line-height: 1.6; margin: 0; padding: 15px; background-color: #f4f6f9; color: #333333;">
+<body>
 
-    <!-- ==========================================
-         MAIN WRAPPER CONTAINER
-         ========================================== -->
-    <div style="max-width: 850px; margin: 0 auto; background-color: #ffffff; padding: 25px; border: 1px solid #dcdcdc; border-radius: 6px;">
+    <!-- Sticky Navigation Bar (Authored by Mukesh) -->
+    <header class="site-header">
+        <div class="site-container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="index.html" class="brand-logo" aria-label="DreamNest Home">
+                    <span class="brand-logo__icon">🏰</span>
+                    <div>
+                        <span>DreamNest</span>
+                        <span class="brand-logo__sub">Verified Properties</span>
+                    </div>
+                </a>
 
-        <!-- ==========================================
-             SECTION 1: HEADER & WEBSITE BRANDING
-             ========================================== -->
-        <header style="text-align: center; border-bottom: 2px solid #2b5b84; padding-bottom: 15px; margin-bottom: 15px;">
-            <h1 style="color: #2b5b84; margin-bottom: 5px;">DreamNest Realty</h1>
-            <p style="margin: 0; color: #555555; font-size: 15px;">Your trusted platform for verified homes, apartments, and rental properties.</p>
-        </header>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="properties.html" class="nav-link">All Properties</a></li>
+                    <li><a href="contact.html" class="nav-link">Book a Visit</a></li>
+                    <li><a href="about.html" class="nav-link is-active">About & Team</a></li>
+                </ul>
 
-        <!-- ==========================================
-             SHARED NAVIGATION BAR (Links all 4 pages)
-             ========================================== -->
-        <nav style="background-color: #e8eff5; padding: 10px 15px; border-radius: 4px; margin-bottom: 25px; text-align: center;">
-            <a href="index.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px;">Home</a> |
-            <a href="properties.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px;">All Properties</a> |
-            <a href="contact.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px;">Book a Visit</a> |
-            <a href="about.html" style="color: #2b5b84; font-weight: bold; text-decoration: none; margin: 0 10px; border-bottom: 2px solid #2b5b84; padding-bottom: 2px;">About & Team</a>
-        </nav>
+                <div class="nav-actions">
+                    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggleBtn" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <!-- ==========================================
-             PAGE TITLE & INTRO
-             ========================================== -->
-        <section style="margin-bottom: 25px;">
-            <h2 style="color: #2b5b84; margin-top: 0; border-bottom: 1px solid #cfd8dc; padding-bottom: 8px;">About the Project & Team</h2>
-            <p style="font-size: 14px; color: #555555;">
-                This website was developed as an academic project for 1st Year B.Tech Engineering students to demonstrate mastery of standard, semantic HTML5 structure, form handling, tables, and responsive mobile viewport principles without relying on heavy frameworks or external scripts.
-            </p>
+    <main>
+        <!-- Page Title & Header Banner -->
+        <section class="hero-section" style="padding: 48px 0 40px 0;">
+            <div class="site-container">
+                <div class="hero-content">
+                    <div class="hero-pill-badge">
+                        <span>🎓 Academic Submission • CSE326</span>
+                    </div>
+                    <h1 class="hero-title" style="font-size: 36px;">
+                        About DreamNest & <span>Project Team</span>
+                    </h1>
+                    <p class="hero-subtitle" style="font-size: 16px; margin-bottom: 0;">
+                        Developed as a 3-member collaborative web development project demonstrating modular architecture, separation of concerns, and full responsiveness without third-party frameworks.
+                    </p>
+                </div>
+            </div>
         </section>
 
-        <!-- ==========================================
-             TEAM CONTRIBUTION BREAKDOWN TABLE
-             ========================================== -->
-        <main>
-            <section style="margin-bottom: 30px;">
-                <h3 style="color: #2b5b84; margin-bottom: 10px;">3-Member Team Work Division</h3>
-                <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse; border-color: #cfd8dc; font-size: 13px; text-align: left;">
-                    <thead style="background-color: #eceff1;">
-                        <tr>
-                            <th style="width: 25%;">Team Member</th>
-                            <th style="width: 35%;">Module Owned</th>
-                            <th style="width: 40%;">Core Responsibilities & HTML Tags</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Anmol</strong><br><span style="color: #666; font-size: 12px;">Dev 1 (@Anmol-k-5)</span></td>
-                            <td>
-                                <strong>Data Layer & Search Engine</strong><br>
-                                <code>properties-data.js</code>, <code>search-filter.js</code>
-                            </td>
-                            <td>
-                                Master dataset of 12 verified listings with RERA codes, dynamic multi-criteria filter pipeline, live keyword search, 5 sorting algorithms, and LocalStorage favorites state management.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Mukesh</strong><br><span style="color: #666; font-size: 12px;">Dev 2 (@mukeshkashyap-cse)</span></td>
-                            <td>
-                                <strong>UI/UX Architecture & Layout</strong><br>
-                                <code>index.html</code>, <code>main.css</code>, <code>responsive.css</code>
-                            </td>
-                            <td>
-                                Semantic HTML5 structure, CSS variables design system, sticky glassmorphic navigation, mobile hamburger drawer menu, responsive media queries, and property card grid layout.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Kunal</strong><br><span style="color: #666; font-size: 12px;">Dev 3 (@kp4339536-netizen)</span></td>
-                            <td>
-                                <strong>Interactive Tools & Utilities</strong><br>
-                                <code>calculator.js</code>, <code>modal-contact.js</code>, <code>components.css</code>
-                            </td>
-                            <td>
-                                Home Loan / EMI calculator with real-time financial math, Quick-View property modal with photo gallery switcher, and site-visit booking form with regex input validation.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+        <!-- Academic Team Contribution Breakdown -->
+        <section class="site-container" style="margin: 40px auto 60px auto;">
+            
+            <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); margin-bottom: 32px;">
+                <span class="section-tag">Team Work Breakdown</span>
+                <h2 style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">3-Member Responsibility & Code Ownership</h2>
+                <p style="font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 24px;">
+                    Each team member independently authored a dedicated system layer with distinctive coding habits, modular file boundaries, and individual Git commit attribution.
+                </p>
 
-            <!-- ==========================================
-                 KEY HTML CONCEPTS IMPLEMENTED
-                 ========================================== -->
-            <section style="margin-bottom: 30px;">
-                <h3 style="color: #2b5b84; margin-bottom: 10px;">Summary of HTML Concepts Demonstrated</h3>
-                <ul style="font-size: 13px; color: #37474f; line-height: 1.8;">
-                    <li><strong>Semantic Layout Tags:</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>.</li>
-                    <li><strong>Form Controls:</strong> <code>&lt;fieldset&gt;</code>, <code>&lt;legend&gt;</code>, <code>&lt;input type="text"&gt;</code>, <code>&lt;input type="email"&gt;</code>, <code>&lt;input type="tel"&gt;</code>, <code>&lt;input type="date"&gt;</code>, <code>&lt;input type="radio"&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>.</li>
-                    <li><strong>Tabular Data:</strong> <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code> for specifications and schedules.</li>
-                    <li><strong>Interactive Elements without JS:</strong> <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> for collapsible accordions.</li>
-                    <li><strong>Protocols & Links:</strong> Relative page linking, anchor targets, <code>mailto:</code> for email, and <code>tel:</code> for calling.</li>
-                </ul>
-            </section>
-        </main>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left;">
+                        <thead>
+                            <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                                <th style="padding: 12px 14px; color: #334155;">Team Member</th>
+                                <th style="padding: 12px 14px; color: #334155;">Module & Domain</th>
+                                <th style="padding: 12px 14px; color: #334155;">Files Owned</th>
+                                <th style="padding: 12px 14px; color: #334155;">Core Responsibilities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 16px 14px;">
+                                    <strong style="color: #0f172a; font-size: 15px;">Anmol</strong><br>
+                                    <span style="font-size: 12px; color: #2563eb; font-weight: 600;">@Anmol-k-5</span><br>
+                                    <span style="font-size: 11px; color: #64748b;">(Developer 1)</span>
+                                </td>
+                                <td style="padding: 16px 14px; font-weight: 600; color: #1e3a8a;">
+                                    Data Layer, State & Search Engine
+                                </td>
+                                <td style="padding: 16px 14px; font-family: monospace; font-size: 13px;">
+                                    js/properties-data.js<br>
+                                    js/storage-state.js<br>
+                                    js/search-filter.js
+                                </td>
+                                <td style="padding: 16px 14px; font-size: 13px; color: #475569; line-height: 1.5;">
+                                    12-property verified catalog, real-time multi-criteria filter pipeline, live keyword search with debouncing, 5 sorting algorithms, and LocalStorage favorites state management.
+                                </td>
+                            </tr>
 
-        <!-- ==========================================
-             SECTION: FOOTER & DIRECT CONTACT DETAILS
-             ========================================== -->
-        <footer style="margin-top: 35px; border-top: 2px solid #2b5b84; padding-top: 15px; text-align: center; font-size: 13px; color: #546e7a;">
-            <p style="margin: 4px 0;"><strong>DreamNest Realty Office</strong> | 2nd Floor, Brigade Plaza, MG Road, Bangalore - 560001</p>
-            <p style="margin: 4px 0;">
-                Direct Inquiries: 
-                <a href="mailto:info@dreamnestrealty.example" style="color: #2b5b84; text-decoration: underline;">info@dreamnestrealty.example</a> 
-                &nbsp;|&nbsp; 
-                Phone: 
-                <a href="tel:+919876543210" style="color: #2b5b84; text-decoration: underline;">+91 98765 43210</a>
-            </p>
-            <p style="margin-top: 10px;">
-                <a href="index.html" style="color: #2b5b84;">Home</a> &bull; 
-                <a href="properties.html" style="color: #2b5b84;">Properties</a> &bull; 
-                <a href="contact.html" style="color: #2b5b84;">Booking</a> &bull; 
-                <a href="about.html" style="color: #2b5b84;">About Us</a>
-            </p>
-            <p style="margin-top: 10px; font-size: 12px; color: #90a4ae;">
-                &copy; 2026 DreamNest Real Estate Listing Project &bull; 1st Year Engineering Academic Submission
-            </p>
-        </footer>
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 16px 14px;">
+                                    <strong style="color: #0f172a; font-size: 15px;">Mukesh</strong><br>
+                                    <span style="font-size: 12px; color: #059669; font-weight: 600;">@mukeshkashyap-cse</span><br>
+                                    <span style="font-size: 11px; color: #64748b;">(Developer 2)</span>
+                                </td>
+                                <td style="padding: 16px 14px; font-weight: 600; color: #059669;">
+                                    UI/UX Architecture & Responsive Layout
+                                </td>
+                                <td style="padding: 16px 14px; font-family: monospace; font-size: 13px;">
+                                    index.html<br>
+                                    css/main.css<br>
+                                    css/responsive.css
+                                </td>
+                                <td style="padding: 16px 14px; font-size: 13px; color: #475569; line-height: 1.5;">
+                                    Semantic HTML5 structure, CSS custom properties (:root variables), responsive media queries for desktop/tablet/mobile, off-canvas navigation drawer, and property card grid layout.
+                                </td>
+                            </tr>
 
-    </div>
+                            <tr>
+                                <td style="padding: 16px 14px;">
+                                    <strong style="color: #0f172a; font-size: 15px;">Kunal</strong><br>
+                                    <span style="font-size: 12px; color: #d97706; font-weight: 600;">@kp4339536-netizen</span><br>
+                                    <span style="font-size: 11px; color: #64748b;">(Developer 3)</span>
+                                </td>
+                                <td style="padding: 16px 14px; font-weight: 600; color: #d97706;">
+                                    Interactive Tools, Modals & Forms
+                                </td>
+                                <td style="padding: 16px 14px; font-family: monospace; font-size: 13px;">
+                                    js/calculator.js<br>
+                                    js/modal-contact.js<br>
+                                    css/components.css
+                                </td>
+                                <td style="padding: 16px 14px; font-size: 13px; color: #475569; line-height: 1.5;">
+                                    Home Loan / EMI loan calculator with mathematical formulas, Quick-View property details modal with photo gallery switcher, and site-visit booking form with regex validation.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
+            <!-- Technical Concepts Implemented -->
+            <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); margin-bottom: 32px;">
+                <span class="section-tag">Learning Outcomes</span>
+                <h2 style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Core Concepts Demonstrated</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 20px;">
+                    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+                        <h4 style="color: #1e3a8a; margin-bottom: 8px;">Semantic HTML5</h4>
+                        <ul style="font-size: 13px; color: #475569; line-height: 1.8; padding-left: 18px;">
+                            <li><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code></li>
+                            <li><code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code></li>
+                            <li>ARIA Accessibility Landmarks</li>
+                            <li>Specialized Inputs (<code>email</code>, <code>tel</code>, <code>date</code>)</li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+                        <h4 style="color: #059669; margin-bottom: 8px;">Modular CSS3</h4>
+                        <ul style="font-size: 13px; color: #475569; line-height: 1.8; padding-left: 18px;">
+                            <li>CSS Custom Properties (Variables)</li>
+                            <li>CSS Grid Auto-Fill Layouts</li>
+                            <li>Flexbox Alignment & Spacing</li>
+                            <li>Media Queries & Print Stylesheets</li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+                        <h4 style="color: #d97706; margin-bottom: 8px;">Vanilla JavaScript (ES6+)</h4>
+                        <ul style="font-size: 13px; color: #475569; line-height: 1.8; padding-left: 18px;">
+                            <li>Functional Methods (<code>filter</code>, <code>map</code>, <code>reduce</code>)</li>
+                            <li>LocalStorage CRUD API</li>
+                            <li>Financial Mathematical Algorithms</li>
+                            <li>Input Regex & Date Constraints</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Viva Defense Guide -->
+            <div style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);">
+                <span class="section-tag">Evaluation Guide</span>
+                <h2 style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Frequently Asked Questions in Lab Viva</h2>
+                
+                <div class="faq-accordion" style="margin-top: 16px;">
+                    <div class="faq-accordion__item is-open">
+                        <button type="button" class="faq-accordion__question">How does the project maintain separation of concerns among 3 developers?</button>
+                        <div class="faq-accordion__answer">
+                            We partitioned the codebase into distinct functional layers: Anmol manages data schemas and search logic (<code>js/properties-data.js</code>, <code>js/search-filter.js</code>); Mukesh owns the UI layout and responsive design system (<code>index.html</code>, <code>css/main.css</code>); and Kunal develops interactive utilities and client-side forms (<code>js/calculator.js</code>, <code>css/components.css</code>).
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion__item">
+                        <button type="button" class="faq-accordion__question">How does the Home Loan EMI calculation formula work?</button>
+                        <div class="faq-accordion__answer">
+                            We use the standard banking equation: <code>EMI = [P × r × (1+r)^n] / [(1+r)^n - 1]</code>, where P is the net loan principal (Property Price minus Down Payment), r is the monthly interest rate (Annual Rate / 12 / 100), and n is total monthly installments (Tenure in Years × 12).
+                        </div>
+                    </div>
+
+                    <div class="faq-accordion__item">
+                        <button type="button" class="faq-accordion__question">How are user favorites persisted without a backend server?</button>
+                        <div class="faq-accordion__answer">
+                            We use the HTML5 <code>window.localStorage</code> API. When a user clicks the heart icon on any property card, its unique ID is stored inside a JSON array under the key <code>dreamnest_saved_favorites_v2</code>, surviving page refreshes and browser restarts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Floating Scroll-To-Top Button -->
+    <button type="button" class="scroll-to-top-btn" id="scrollToTopBtn" aria-label="Scroll back to top" title="Scroll to top">↑</button>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="site-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🏰 DreamNest Realty</h3>
+                    <p>India's premier transparent real estate discovery platform. Connecting discerning homebuyers with verified builders and authentic resale properties.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="properties.html">All Properties</a></li>
+                        <li><a href="contact.html">Book a Visit</a></li>
+                        <li><a href="about.html">About & Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Direct Contact</h4>
+                    <ul class="footer-links">
+                        <li>📍 Brigade Plaza, MG Road, Bengaluru</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ contact@dreamnest.example</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Academic Submission</h4>
+                    <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">
+                        CSE326 Web Development Project<br>
+                        3-Member Team Collaboration (Anmol, Mukesh, Kunal)
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 DreamNest Real Estate Project • All Rights Reserved.</p>
+                <p>Semantic HTML5 &bull; Modular CSS3 &bull; Vanilla JavaScript ES6+</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/modal-contact.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
+            var navLinks = document.querySelector('.nav-links');
+            if (toggleBtn && navLinks) {
+                toggleBtn.addEventListener('click', function () {
+                    navLinks.classList.toggle('is-open');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
