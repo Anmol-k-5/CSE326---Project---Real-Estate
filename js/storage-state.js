@@ -347,9 +347,66 @@ window.StorageState = window.StorageState || {};
     // Theme API
     getSavedTheme,
     saveTheme,
+    initTheme,
 
     // Subscription
     subscribe
   };
+
+  /**
+   * Initializes theme on DOM ready and binds click listeners to #themeToggleBtn
+   */
+  function initTheme() {
+    const saved = getSavedTheme();
+    if (saved === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+
+    const updateToggleIcon = () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      const icon = document.getElementById("themeToggleIcon");
+      if (icon) {
+        icon.textContent = isDark ? "☀️" : "🌙";
+      }
+      const btn = document.getElementById("themeToggleBtn");
+      if (btn) {
+        btn.setAttribute("title", isDark ? "Switch to Light Mode" : "Switch to Dark Mode");
+        btn.setAttribute("aria-label", isDark ? "Switch to Light Mode" : "Switch to Dark Mode");
+      }
+    };
+
+    updateToggleIcon();
+
+    const toggleBtn = document.getElementById("themeToggleBtn");
+    if (toggleBtn && !toggleBtn._hasThemeListener) {
+      toggleBtn._hasThemeListener = true;
+      toggleBtn.addEventListener("click", () => {
+        const currentlyDark = document.documentElement.getAttribute("data-theme") === "dark";
+        const nextTheme = currentlyDark ? "light" : "dark";
+        if (nextTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+        saveTheme(nextTheme);
+        updateToggleIcon();
+
+        if (window.UIUtils && typeof window.UIUtils.showToast === "function") {
+          window.UIUtils.showToast(`Switched to ${nextTheme === "dark" ? "Dark" : "Light"} Mode`, "info");
+        }
+      });
+    }
+  }
+
+  // Auto-init theme as early as possible
+  if (typeof document !== "undefined") {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initTheme);
+    } else {
+      initTheme();
+    }
+  }
 
 })();

@@ -36,6 +36,7 @@ The project was engineered using pure web standards—Semantic HTML5, CSS3 Custo
 3. **Responsive Visual Experience:** Provide fluid layout adaptation across desktop (1920px), tablet (768px–1024px), and mobile viewports (down to 360px).
 4. **Client-Side Financial Analytics:** Integrate an interactive banking EMI calculator to eliminate guesswork for prospective buyers.
 5. **Stateful Offline Persistence:** Retain user saved favorites and recently inspected listings across browser sessions using HTML5 LocalStorage.
+6. **Persistent Dark / Light Theming:** Deliver an accessible, high-contrast dark theme with zero screen-flicker, toggled via a universal navbar control and remembered via LocalStorage.
 
 ### 2.2 System Specifications
 * **Client Environment:** Modern Web Browser (Google Chrome 90+, Mozilla Firefox 88+, MS Edge 90+, Safari 14+).
