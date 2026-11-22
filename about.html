@@ -165,7 +165,7 @@
                 <span class="section-tag">Learning Outcomes</span>
                 <h2 style="font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">Core Concepts Demonstrated</h2>
                 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 20px;">
+                <div class="about-pillars-grid">
                     <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
                         <h4 style="color: #1e3a8a; margin-bottom: 8px;">Semantic HTML5</h4>
                         <ul style="font-size: 13px; color: #475569; line-height: 1.8; padding-left: 18px;">
@@ -281,13 +281,7 @@
     <script src="js/modal-contact.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
-            var navLinks = document.querySelector('.nav-links');
-            if (toggleBtn && navLinks) {
-                toggleBtn.addEventListener('click', function () {
-                    navLinks.classList.toggle('is-open');
-                });
-            }
+            // Mobile nav toggle is centralized in js/modal-contact.js
 
             // Sync favorites badge
             if (window.StorageState) {

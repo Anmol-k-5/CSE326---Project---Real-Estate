@@ -57,12 +57,34 @@
         grid-template-columns: 1fr;
         gap: 24px;
     }
+
+    .city-discovery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .about-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 
 /* --------------------------------------------------------------------------
    2. MOBILE BREAKPOINT (max-width: 768px)
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 768px) {
+    .site-header {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .site-container {
+        padding: 0 16px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
     /* Navbar Hamburger Setup */
     .mobile-menu-toggle {
         display: flex;
@@ -90,7 +112,9 @@
         top: 72px;
         left: 0;
         right: 0;
-        background-color: #ffffff;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: var(--bg-card, #ffffff);
         border-bottom: 1px solid var(--border-color);
         flex-direction: column;
         padding: 24px 20px;
@@ -99,6 +123,11 @@
         transform: translateY(-150%);
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 999;
+    }
+
+    [data-theme="dark"] .nav-links {
+        background-color: #1e293b;
+        border-color: #334155;
     }
 
     .nav-links.is-open {
@@ -114,6 +143,8 @@
     /* Hero Section */
     .hero-section {
         padding: 44px 0 50px 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .hero-title {
@@ -125,12 +156,71 @@
         margin-bottom: 24px;
     }
 
+    .hero-search-wrap {
+        flex-direction: column;
+        padding: 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero-search-input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero-search-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
     .hero-quick-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 16px;
+        width: 100%;
     }
 
     .hero-stat-item strong {
         font-size: 20px;
+    }
+
+    .city-discovery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        width: 100%;
+    }
+
+    .financial-teaser-banner {
+        grid-template-columns: 1fr;
+        padding: 24px 18px;
+        gap: 24px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .financial-teaser-banner h2 {
+        font-size: 22px !important;
+    }
+
+    .contact-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .about-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .reviews-grid-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: 100%;
     }
 
     /* Filter Panel collapses to single column */
@@ -306,6 +396,10 @@
         height: 64px;
     }
 
+    .nav-links {
+        top: 64px;
+    }
+
     .brand-logo {
         font-size: 19px;
     }
@@ -315,7 +409,12 @@
     }
 
     .hero-quick-stats {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .city-discovery-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
     }
 

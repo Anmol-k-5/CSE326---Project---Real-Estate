@@ -80,16 +80,16 @@
                     </p>
 
                     <!-- Quick Search Bar in Hero -->
-                    <div style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 12px; border-radius: var(--radius-lg); border: 1px solid rgba(255, 255, 255, 0.25); max-width: 680px; margin: 0 auto; display: flex; gap: 10px;">
+                    <div class="hero-search-wrap">
                         <input 
                             type="text" 
                             id="heroQuickSearch" 
+                            class="hero-search-input"
                             placeholder="Enter city, locality, or project (e.g. Worli, Whitefield, Assagao)..." 
-                            style="flex-grow: 1; padding: 14px 18px; border-radius: var(--radius-md); border: none; font-size: 15px; outline: none;" 
                         />
                         <button 
                             type="button" 
-                            class="btn btn--primary btn--md" 
+                            class="btn btn--primary btn--md hero-search-btn" 
                             id="heroSearchBtn"
                             style="background-color: #2563eb; color: #ffffff; padding: 0 24px; font-weight: 700;"
                         >
@@ -151,7 +151,7 @@
                     <p class="section-subtitle">Click a metropolitan hub to explore hand-verified residential real estate opportunities.</p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                <div class="city-discovery-grid">
                     <a href="properties.html" class="city-card" style="text-decoration: none; border-radius: var(--radius-md); overflow: hidden; position: relative; height: 180px; box-shadow: var(--shadow-sm); display: block;">
                         <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80" alt="Mumbai" style="width: 100%; height: 100%; object-fit: cover;" />
                         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; background: linear-gradient(transparent, rgba(15, 23, 42, 0.9)); color: #ffffff;">
@@ -191,7 +191,7 @@
              SECTION 4: FINANCIAL MORTGAGE PREVIEW TEASER
              ================================================================== -->
         <section class="site-container" style="margin-bottom: 60px;">
-            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: #ffffff; border-radius: var(--radius-lg); padding: 48px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 36px; align-items: center; box-shadow: var(--shadow-xl);">
+            <div class="financial-teaser-banner">
                 <div>
                     <span class="hero-pill-badge" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: #ffffff;">
                         🧮 Smart Decision Tool
@@ -319,7 +319,7 @@
             </div>
 
             <!-- Customer Reviews Grid -->
-            <div id="customerReviewsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+            <div id="customerReviewsGrid" class="reviews-grid-container">
                 <!-- Initial Verified Reviews -->
                 <div class="review-card" style="background-color: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
                     <div style="color: #f59e0b; font-size: 16px; margin-bottom: 12px;">★★★★★</div>
@@ -425,14 +425,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle
-            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
-            var navLinks = document.querySelector('.nav-links');
-            if (toggleBtn && navLinks) {
-                toggleBtn.addEventListener('click', function () {
-                    navLinks.classList.toggle('is-open');
-                });
-            }
+            // Mobile nav toggle is centralized in js/modal-contact.js
 
             // Render Featured Spotlight Properties on Home
             if (window.RealEstateData) {

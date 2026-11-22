@@ -446,6 +446,36 @@ window.UIUtils = window.UIUtils || {};
     }
 
     /**
+     * Mobile Navigation Drawer Handler
+     * Handles hamburger toggle, outside clicks, and link clicks
+     */
+    function initMobileNav() {
+        var toggleBtn = document.getElementById('mobileMenuToggleBtn');
+        var navLinks = document.querySelector('.nav-links');
+        if (toggleBtn && navLinks) {
+            toggleBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('is-open');
+            });
+
+            // Close when clicking any nav link
+            var links = navLinks.querySelectorAll('.nav-link');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function () {
+                    navLinks.classList.remove('is-open');
+                });
+            }
+
+            // Close when clicking outside on mobile
+            document.addEventListener('click', function (e) {
+                if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    navLinks.classList.remove('is-open');
+                }
+            });
+        }
+    }
+
+    /**
      * Master bootstrap for Kunal's interactive components
      */
     function init() {
@@ -453,6 +483,7 @@ window.UIUtils = window.UIUtils || {};
         initTourBookingForm();
         initFaqAccordion();
         initScrollToTop();
+        initMobileNav();
     }
 
     // Public API exposed for Anmol and Mukesh

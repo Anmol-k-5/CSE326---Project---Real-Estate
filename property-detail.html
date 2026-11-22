@@ -155,14 +155,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // 1. Mobile Menu Drawer
-            var toggleBtn = document.getElementById('mobileMenuToggleBtn');
-            var navLinks = document.querySelector('.nav-links');
-            if (toggleBtn && navLinks) {
-                toggleBtn.addEventListener('click', function () {
-                    navLinks.classList.toggle('is-open');
-                });
-            }
+            // Mobile nav toggle is centralized in js/modal-contact.js
 
             // 2. Sync Saved Wishlist Counter Badge
             function updateFavBadge() {
